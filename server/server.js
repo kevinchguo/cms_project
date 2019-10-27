@@ -7,9 +7,7 @@ const PORT = process.env.EXPRESS_HOST_PORT;
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.json({ SMOKE: "Smoke test" });
-});
+app.get("");
 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);

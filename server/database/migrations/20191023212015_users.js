@@ -10,7 +10,7 @@ exports.up = function(knex) {
     table
       .integer("user_status")
       .unsigned()
-      .references("user_status");
+      .references("user_statuses.id");
     table.timestamps(true, true);
   });
 };
