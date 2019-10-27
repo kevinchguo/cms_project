@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import styles from "./Navbar.scss";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Messages from "../Messages/Messages";
+import Body from "../Body/Body";
+import styles from "./Navbar.module.scss";
 
 class Navbar extends Component {
   constructor(props) {
@@ -8,17 +11,32 @@ class Navbar extends Component {
   }
   render() {
     return (
-      <>
-        <h1>Nav</h1>
-        <div className="options">
+      <Router>
+        <h1 className={styles.header}>Nav</h1>
+        <div className={styles.options}>
           <ul>
-            <li>Home</li>
-            <li>Massages</li>
-            <li>Settings</li>
-            <li>New</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/messages">Messages</Link>
+            </li>
+            <li>
+              <Link to="/settings">Settings</Link>
+            </li>
+            <li>
+              <Link to="/new">New</Link>
+            </li>
           </ul>
         </div>
-      </>
+
+        <div className="body-container">
+          <Switch>
+            <Route path="/messages" component={Messages} />
+            <Route path="/" component={Body} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
