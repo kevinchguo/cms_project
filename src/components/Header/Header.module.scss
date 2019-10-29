@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css?family=Staatliches&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+.headerContainer {
+  background: #19647e;
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  .logo {
+    color: white;
+    font-family: "Staatliches";
+    text-transform: uppercase;
+    font-size: 4.5rem;
+    text-shadow: 10px;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+  }
+  .login {
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 50px;
+    .button {
+      width: 100px;
+      height: 40%;
+      background: #19647e;
+      border: none;
+      color: white;
+      font-family: "Montserrat", sans-serif;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+      &:hover {
+        // background: white;
+        color: #02b5bc;
+      }
+    }
+  }
+}
