@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Messages from "../Messages/Messages";
-import Body from "../Body/Body";
+import Body from "../../containers/Body";
 import styles from "./Navbar.module.scss";
 
 class Navbar extends Component {

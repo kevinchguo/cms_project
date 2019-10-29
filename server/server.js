@@ -9,7 +9,7 @@ const PORT = process.env.EXPRESS_HOST_PORT;
 const app = express();
 app.use(decorator);
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   return req.db.Creature.fetchAll().then(creatures => {
     res.json(creatures);
   });
