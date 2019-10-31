@@ -8,7 +8,7 @@ export function loadCreatures(payload) {
 }
 
 export const loadCreatureAsync = () => async dispatch => {
-    await fetch('/api')
+    await fetch('/api/creatures')
     .then((response) => {
         console.log('response', response.body);
         return response.json();
