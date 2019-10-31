@@ -26,12 +26,6 @@ app.use('/api/creature_statuses', creatureStatusRoutes);
 app.use('/api/images', imageRoutes);
 app.use('/api/user_statuses', userStatusRoutes);
 
-app.get("/api", (req, res) => {
-  return req.db.Creature.fetchAll().then(creatures => {
-    res.json(creatures);
-  });
-});
-
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });
