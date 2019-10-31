@@ -1,0 +1,23 @@
+.BodyContainer {
+  width: 100%;
+  height: 85vh;
+  display: flex;
+}
+
+.Navbar {
+  width: 15%;
+  height: 85vh;
+  background: #37392e;
+}
+
+.Content {
+  width: 85%;
+  max-height: 85vh;
+  padding: 10px;
+  background-image: #eee5e5;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+}

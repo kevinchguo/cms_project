@@ -35,8 +35,10 @@
       font-size: 1.4rem;
       cursor: pointer;
       transition: 0.2s;
+      link {
+        text-decoration: none;
+      }
       &:hover {
-        // background: white;
         color: #02b5bc;
       }
     }
