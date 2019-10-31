@@ -1,4 +1,37 @@
-.options {
-  border: 10px solid lighten(green, 5%);
-  background: lighten(red, 20%);
+@import url("https://fonts.googleapis.com/css?family=Montserrat|PT+Sans|Quicksand&display=swap");
+
+.outerContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.menu {
+  width: 15%;
+  height: 85vh;
+  background: #37392e;
+  a {
+    color: #ddcecd;
+    font-size: 1.4rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Quicksand", sans-serif;
+    &:hover {
+      color: #02b5bc;
+    }
+  }
+  li {
+    padding-top: 30px;
+    padding-left: 50px;
+  }
+}
+
+.content {
+  width: 85%;
+  max-height: 85vh;
+  padding: 10px;
+  background-image: #eee5e5;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
 }

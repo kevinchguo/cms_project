@@ -12,29 +12,30 @@ class Navbar extends Component {
   render() {
     return (
       <Router>
-        <h1 className={styles.header}>Nav</h1>
-        <div className={styles.options}>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/messages">Messages</Link>
-            </li>
-            <li>
-              <Link to="/settings">Settings</Link>
-            </li>
-            <li>
-              <Link to="/new">New</Link>
-            </li>
-          </ul>
-        </div>
+        <div className={styles.outerContainer}>
+          <div className={styles.menu}>
+            <ul lassName={styles.menuItems}>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/messages">Messages</Link>
+              </li>
+              <li>
+                <Link to="/settings">Settings</Link>
+              </li>
+              <li>
+                <Link to="/new">+ New</Link>
+              </li>
+            </ul>
+          </div>
 
-        <div className="body-container">
-          <Switch>
-            <Route path="/messages" component={Messages} />
-            <Route path="/" component={Body} />
-          </Switch>
+          <div className={styles.content}>
+            <Switch>
+              <Route path="/messages" component={Messages} />
+              <Route path="/" component={Body} />
+            </Switch>
+          </div>
         </div>
       </Router>
     );
