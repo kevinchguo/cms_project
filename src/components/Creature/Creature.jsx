@@ -4,8 +4,8 @@ import styles from "./Creature.module.scss";
 const Creature = props => {
   return (
     <div className={styles.outerContainer}>
-      {props.name}
-      {props.description}
+      <h3>{props.name}</h3>
+      <p>{props.description}</p>
     </div>
   );
 };

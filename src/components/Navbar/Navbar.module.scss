@@ -31,4 +31,7 @@
   max-height: 85vh;
   padding: 10px;
   background-image: #eee5e5;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
 }

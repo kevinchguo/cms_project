@@ -14,10 +14,8 @@ class Body extends Component {
   }
 
   render() {
-    console.log("1111", this.props);
     return (
       <>
-        <h1>Creatures goes here</h1>
         {this.props.creatures.map(creature => {
           return (
             <Creature
