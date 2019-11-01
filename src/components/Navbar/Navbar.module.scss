@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat|PT+Sans|Quicksand&display=swap");
 
 .menuItems {
+  li {
+    padding: 20px;
+    width: 100%;
+    transition: 0.2s;
+    &:hover {
+      background: aquamarine;
+    }
+  }
   a {
     color: #ddcecd;
     font-size: 1.4rem;
@@ -8,11 +16,20 @@
     text-transform: uppercase;
     font-family: "Quicksand", sans-serif;
     &:hover {
-      color: #02b5bc;
+      color: rgb(85, 85, 85);
     }
   }
+}
+
+.login {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
   li {
-    padding-top: 30px;
-    padding-left: 50px;
+    text-align: center;
+  }
+  .login {
+    display: block;
   }
 }

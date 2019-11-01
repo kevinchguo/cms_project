@@ -20,9 +20,9 @@ function App() {
         </div>
         <div className={styles.Content}>
           <Switch>
-            <Route path="/messages" component={Messages} />
-            <Route exact path="/login" component={Login} />
             <Route exact path="/" component={Body} />
+            <Route path="/messages" component={Messages} />
+            <Route path="/login" component={Login} />
           </Switch>
         </div>
       </div>

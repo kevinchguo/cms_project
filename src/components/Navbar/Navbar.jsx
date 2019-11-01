@@ -11,18 +11,21 @@ class Navbar extends Component {
     return (
       <div className={styles.outerContainer}>
         <ul className={styles.menuItems}>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/messages">Messages</Link>
-          </li>
-          <li>
-            <Link to="/settings">Settings</Link>
-          </li>
-          <li>
-            <Link to="/new">+ New</Link>
-          </li>
+          <Link to="/">
+            <li>Home</li>
+          </Link>
+          <Link to="/login">
+            <li className={styles.login}>Login</li>
+          </Link>
+          <Link to="/messages">
+            <li>Messages</li>
+          </Link>
+          <Link to="/settings">
+            <li>Settings</li>
+          </Link>
+          <Link to="/new">
+            <li>+ New</li>
+          </Link>
         </ul>
       </div>
     );
