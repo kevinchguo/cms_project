@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
-
-// import Navbar from "../Navbar";
+import Search from "../Search";
 
 class Header extends Component {
   constructor(props) {
@@ -16,7 +15,9 @@ class Header extends Component {
         <div className={styles.logo}>
           <div>anml</div>
         </div>
-        <div></div>
+        <div className={styles.search}>
+          <Search />
+        </div>
         <div className={styles.login}>
           <Link to="/login">Login</Link>
         </div>
