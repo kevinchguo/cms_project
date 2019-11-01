@@ -1,7 +1,15 @@
 .outerContainer {
-  border: 1px solid black;
   background: white;
-  width: 250px;
+  width: 350px;
   height: 400px;
   margin: 10px;
+  padding: 20px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .outerContainer {
+    width: 100%;
+  }
 }
