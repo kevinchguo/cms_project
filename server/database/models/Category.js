@@ -7,6 +7,9 @@ class Category extends bookshelf.Model {
   get timestamps() {
     return true;
   }
+  // creature() {
+  //   return this.belongsToMany('Creature');
+  // }
 }
 
 module.exports = bookshelf.model("Category", Category);

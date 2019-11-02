@@ -1,12 +1,5 @@
 export const LOAD_CREATURE = 'LOAD_CREATURE';
 
-export function loadCreatures(payload) {
-    return {
-        type: LOAD_CREATURE,
-        payload
-    }
-}
-
 export const loadCreatureAsync = () => async dispatch => {
     await fetch('/api/creatures')
     .then((response) => {
@@ -20,6 +13,6 @@ export const loadCreatureAsync = () => async dispatch => {
         });
     })
     .catch(err => {
-        console.log(err.message, 'lol');
+        console.log(err.message);
     })
 }
