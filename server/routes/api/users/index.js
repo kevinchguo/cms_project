@@ -11,5 +11,19 @@ userRouter.route('/')
         res.sendStatus(500);
     })
 })
+.post((req, res) => {
+    const email = req.body.email;
+    const name = req.body.name;
+    const password = req.body.password;
+    const user_status = req.body.user_status;
+    return new req.db.User({ email, name, password, user_status }).save()
+        .then((user) => {
+            return res.json({ success: true });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        })
+})
 
 module.exports = userRouter;
