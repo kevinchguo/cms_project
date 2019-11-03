@@ -1,4 +1,8 @@
 const bookshelf = require("../bookshelf");
+require("./User");
+require("./Category");
+require("./CreatureStatus");
+require("./Condition");
 
 class Creature extends bookshelf.Model {
   get tableName() {
@@ -9,19 +13,19 @@ class Creature extends bookshelf.Model {
   }
 
   created_by() {
-    return this.belongsTo("User");
+    return this.hasOne("User", "id");
   }
 
   category() {
-    return this.belongsTo("Category");
+    return this.hasOne("Category", "id");
   }
 
   creature_status() {
-    return this.belongsTo("CreatureStatus");
+    return this.hasOne("CreatureStatus", "id");
   }
 
   condition() {
-    return this.belongsTo("Condition");
+    return this.hasOne("Condition", "id");
   }
 }
 
