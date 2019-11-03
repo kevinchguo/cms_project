@@ -13,11 +13,11 @@ class Creature extends bookshelf.Model {
   }
 
   created_by() {
-    return this.hasOne("User", "id");
+    return this.hasOne("User", ["id"]);
   }
 
   category() {
-    return this.hasOne("Category", "id");
+    return this.hasOne("Category", ["id"]);
   }
 
   creature_status() {
