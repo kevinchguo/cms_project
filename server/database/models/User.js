@@ -8,9 +8,13 @@ class User extends bookshelf.Model {
     return true;
   }
 
-  user_status() {
-    return this.belongsTo("UserStatus");
+  creature() {
+    return this.hasMany("Creature", "creatures");
   }
+
+  // user_status() {
+  //   return this.belongsTo("UserStatus");
+  // }
 }
 
 module.exports = bookshelf.model("User", User);

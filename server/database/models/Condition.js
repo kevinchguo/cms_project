@@ -7,6 +7,9 @@ class Condition extends bookshelf.Model {
   get timestamps() {
     return true;
   }
+  creature() {
+    return this.hasMany("Creature", "creatures");
+  }
 }
 
 module.exports = bookshelf.model("Condition", Condition);

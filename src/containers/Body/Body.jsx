@@ -16,10 +16,11 @@ class Body extends Component {
 
   displayCreatures = () => {
     const sortedCreatures = this.sortCreatures();
+    console.log(sortedCreatures);
     return sortedCreatures.map(creature => {
       return (
         <Creature
-          key={creature.name}
+          key={creature.id}
           name={creature.name}
           description={creature.description}
         />
