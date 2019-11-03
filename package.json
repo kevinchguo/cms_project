@@ -10,6 +10,7 @@
     "bootstrap": "^4.3.1",
     "connect-flash": "^0.1.1",
     "connect-redis": "^4.0.3",
+    "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
@@ -29,6 +30,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.2.0",
     "redis": "^2.8.0",
+    "redis-server": "^1.2.2",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
   },
