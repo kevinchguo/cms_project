@@ -6,7 +6,14 @@ import Search from "../Search";
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLoggedIn: true
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({ isLoggedIn: !this.state.isLoggedIn });
   }
 
   render() {
@@ -15,11 +22,21 @@ class Header extends Component {
         <div className={styles.logo}>
           <div>anml</div>
         </div>
+
         <div className={styles.search}>
           <Search />
         </div>
+
         <div className={styles.login}>
-          <Link to="/login">Logout</Link>
+          {this.state.isLoggedIn ? (
+            <Link to="/login" onClick={this.handleClick}>
+              Logout
+            </Link>
+          ) : (
+            <Link to="/login" onClick={this.handleClick}>
+              login
+            </Link>
+          )}
         </div>
       </div>
     );
