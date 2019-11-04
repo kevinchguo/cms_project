@@ -19,7 +19,7 @@ class Header extends Component {
           <Search />
         </div>
         <div className={styles.login}>
-          <Link to="/login">Login</Link>
+          <Link to="/login">Logout</Link>
         </div>
       </div>
     );
