@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Creature from "../../components/Creature";
 import { loadCreatureAsync } from "../../actions";
+import styles from "./Body.module.scss";
 
 class Body extends Component {
   constructor(props) {
@@ -16,7 +17,6 @@ class Body extends Component {
 
   displayCreatures = () => {
     const sortedCreatures = this.sortCreatures();
-    console.log(sortedCreatures);
     return sortedCreatures.map(creature => {
       return (
         <Creature
@@ -30,7 +30,6 @@ class Body extends Component {
 
   sortCreatures = () => {
     if (this.state.filter === "Newest") {
-      console.log("sort newest");
       return this.props.creatures;
     } else {
       return this.props.creatures;
@@ -44,12 +43,9 @@ class Body extends Component {
   render() {
     return (
       <>
-        <div className="sort">
+        <div className={styles.sort}>
           Sort by:
-          <select
-            className="categories-content"
-            onChange={this.handleOptionChange}
-          >
+          <select className={styles.sorting} onChange={this.handleOptionChange}>
             <option value="Newest">Newest</option>
             <option value="Oldest">Oldest</option>
             <option value="Order A-Z">Order A-Z</option>
@@ -58,7 +54,7 @@ class Body extends Component {
             <option value="Price L-H">Price L-H</option>
           </select>
         </div>
-        <div className="body">{this.displayCreatures()}</div>
+        <div className={styles.cards}>{this.displayCreatures()}</div>
       </>
     );
   }

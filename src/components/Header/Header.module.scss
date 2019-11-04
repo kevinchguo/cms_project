@@ -20,8 +20,9 @@
   }
   .search {
     width: 40%;
-    height: 100%;
-    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .login {
     width: 30%;
@@ -56,6 +57,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 25vh;
     .logo {
       width: 100%;
       justify-content: center;
@@ -64,6 +66,10 @@
     }
     .login {
       display: none;
+    }
+    .search {
+      width: 90%;
+      margin-bottom: 20px;
     }
   }
 }

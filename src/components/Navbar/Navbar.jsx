@@ -24,7 +24,7 @@ class Navbar extends Component {
             <li>Settings</li>
           </Link>
           <Link to="/new">
-            <li>+ New</li>
+            <li className={styles.new}>+ New</li>
           </Link>
         </ul>
       </div>

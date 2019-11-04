@@ -9,12 +9,9 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
-        <form className={styles.search}>
-          <input type="text" name="name" />
-          {/* <button>Search</button> */}
-        </form>
-      </div>
+      <form className={styles.search} autoComplete="off">
+        <input type="text" name="name" placeholder="Search..." />
+      </form>
     );
   }
 }
