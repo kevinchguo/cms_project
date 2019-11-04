@@ -1,0 +1,15 @@
+.cards {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+
+.sort {
+  padding: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .cards {
+    justify-content: center;
+  }
+}
