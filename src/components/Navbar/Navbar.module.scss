@@ -19,21 +19,34 @@
       color: rgb(85, 85, 85);
     }
   }
-  .new {
-    color: cornflowerblue;
-    font-weight: bolder;
-  }
 }
 
-.login {
+.home,
+.messages,
+.cog,
+.plus {
   display: none;
 }
 
 @media screen and (max-width: 900px) {
-  li {
-    text-align: center;
+  .menuItems {
+    display: flex;
+    height: 10vh;
+    padding: 10px;
+    justify-content: space-around;
   }
-  .login {
+  .home,
+  .messages,
+  .cog,
+  .plus {
     display: block;
+    width: 100%;
+    height: 100%;
+    &:hover {
+      color: white;
+    }
+  }
+  li {
+    display: none;
   }
 }

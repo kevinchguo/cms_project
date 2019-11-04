@@ -7,7 +7,11 @@ class New extends Component {
     this.state = {};
   }
   render() {
-    return <h1>New Tab</h1>;
+    return (
+      <div>
+        <h1 className={styles.new}>New Tab</h1>
+      </div>
+    );
   }
 }
 

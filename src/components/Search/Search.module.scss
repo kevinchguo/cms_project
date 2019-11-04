@@ -14,7 +14,8 @@
     font-size: 1.5rem;
     text-transform: uppercase;
     &::placeholder {
-      color: lightgray;
+      color: white;
+      opacity: 0.5;
     }
     &:focus::placeholder {
       transition: 0.3s;
@@ -24,5 +25,22 @@
   form:focus,
   form:active {
     outline: 0;
+  }
+  button {
+    background: none;
+    border: none;
+    color: #7fffd4;
+    display: none;
+  }
+  @media screen and (max-width: 900px) {
+    button {
+      display: inline-block;
+      width: 15%;
+      border-bottom: 3px solid #7fffd4;
+      height: 48px;
+    }
+    input {
+      width: 85%;
+    }
   }
 }
