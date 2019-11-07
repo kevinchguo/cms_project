@@ -11,7 +11,6 @@ creatureRouter.route("/").get((req, res) => {
     ]
   })
     .then(creatures => {
-      console.log(creatures.toJSON());
       return res.json(creatures);
     })
     .catch(err => {
