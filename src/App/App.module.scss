@@ -12,11 +12,17 @@
 .Content {
   width: 85vw;
   padding: 30px;
-  background-image: #eee5e5;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  background: #c7c0c0;
   overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.appContainer {
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -28,5 +34,6 @@
   .Content {
     width: 100%;
     padding: 0px;
+    margin: 0;
   }
 }
