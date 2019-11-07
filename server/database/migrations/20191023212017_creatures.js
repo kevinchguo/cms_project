@@ -4,22 +4,22 @@ exports.up = function(knex) {
     table.string("name").notNullable();
     table.string("description").notNullable();
     table
-      .integer("created_by")
+      .integer("user_id")
       .unsigned()
       .references("users.id")
       .notNullable();
     table
-      .integer("category")
+      .integer("category_id")
       .unsigned()
       .references("categories.id")
       .notNullable();
     table
-      .integer("creature_status")
+      .integer("creature_status_id")
       .unsigned()
       .references("creature_statuses.id")
       .notNullable();
     table
-      .integer("condition")
+      .integer("condition_id")
       .unsigned()
       .references("conditions.id")
       .notNullable();

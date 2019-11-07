@@ -2,10 +2,14 @@ const express = require("express");
 const creatureRouter = express.Router();
 
 creatureRouter.route("/").get((req, res) => {
-  return new req.db.Creature()
-    .fetchAll({
-      withRelated: ["category", "created_by", "creature_status", "condition"]
-    })
+  return req.db.Creature.fetchAll({
+    withRelated: [
+      "user_id",
+      "category_id",
+      "creature_status_id",
+      "condition_id"
+    ]
+  })
     .then(creatures => {
       return res.json(creatures);
     })

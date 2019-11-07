@@ -1,4 +1,5 @@
 const bookshelf = require("../bookshelf");
+require("../models/Creature");
 
 class CreatureStatus extends bookshelf.Model {
   get tableName() {
@@ -9,7 +10,7 @@ class CreatureStatus extends bookshelf.Model {
   }
 
   creature() {
-    return this.hasMany("Creature", "creatures");
+    return this.belongsToMany("Creature", "creatures");
   }
 }
 

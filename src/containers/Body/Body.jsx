@@ -24,6 +24,11 @@ class Body extends Component {
           key={creature.id}
           name={creature.name}
           description={creature.description}
+          user={creature.user_id.name}
+          category={creature.category_id.category}
+          status={creature.creature_status_id.status}
+          condition={creature.condition_id.condition}
+          timestamp={creature.updated_at}
         />
       );
     });
@@ -31,7 +36,29 @@ class Body extends Component {
 
   sortCreatures = () => {
     if (this.state.filter === "Newest") {
-      return this.props.creatures;
+      console.log("this is newest");
+      let newest = this.props.creatures;
+      return newest;
+    } else if (this.state.filter === "Oldest") {
+      console.log("this is oldest");
+      let oldest = this.props.creatures;
+      return oldest;
+    } else if (this.state.filter === "Order A-Z") {
+      console.log("this is order a-z");
+      let orderAZ = this.props.creatures;
+      return orderAZ;
+    } else if (this.state.filter === "Order Z-A") {
+      console.log("this is order z-a");
+      let orderZA = this.props.creatures;
+      return orderZA;
+    } else if (this.state.filter === "Price H-L") {
+      console.log("this is price h-l");
+      let priceHL = this.props.creatures;
+      return priceHL;
+    } else if (this.state.filter === "Price L-H") {
+      console.log("this is price l-h");
+      let priceLH = this.props.creatures;
+      return priceLH;
     } else {
       return this.props.creatures;
     }

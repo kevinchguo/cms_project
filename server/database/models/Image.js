@@ -1,5 +1,5 @@
 const bookshelf = require("../bookshelf");
-
+require("../models/Creature");
 class Image extends bookshelf.Model {
   get tableName() {
     return "images";
@@ -9,7 +9,7 @@ class Image extends bookshelf.Model {
   }
 
   creature_id() {
-    return this.belongsTo("Creature");
+    return this.belongsToMany("Creature", "creatures");
   }
 }
 
