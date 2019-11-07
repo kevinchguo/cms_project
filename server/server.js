@@ -26,7 +26,7 @@ const userRoutes = require("./routes/api/users");
 
 ///// DOTENV & PASSPORT /////
 require("dotenv").config();
-require("./config/passport")(passport);
+// require("./config/passport")(passport);
 
 ///// PORT /////
 const PORT = process.env.EXPRESS_HOST_PORT;
