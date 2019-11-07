@@ -9,10 +9,22 @@ import New from "../components/New";
 import Settings from "../components/Settings";
 import styles from "./App.module.scss";
 
+import { userLoginAsync } from "../actions/index";
+import { connect } from "react-redux";
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isAuthenticated: false
+    };
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin(e) {
+    e.preventDefault();
+
+    this.props.userLoginAsync();
   }
 
   render() {
@@ -21,6 +33,7 @@ class App extends Component {
         <div className={styles.appContainer}>
           <div className={styles.HeaderContainer}>
             <Header />
+            <button onClick={this.handleLogin}>Click Me</button>
           </div>
           <div className={styles.BodyContainer}>
             <div className={styles.Navbar}>
@@ -41,5 +54,18 @@ class App extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    userLoginAsync: () => {
+      return dispatch(userLoginAsync());
+    }
+  };
+};
+
+App = connect(
+  null,
+  mapDispatchToProps
+)(App);
 
 export default App;

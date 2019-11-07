@@ -1,3 +1,5 @@
+import Axios from "axios";
+
 export const LOAD_CREATURE = "LOAD_CREATURE";
 export const USER_LOGIN = "USER_LOGIN";
 
@@ -17,6 +19,14 @@ export const loadCreatureAsync = () => async dispatch => {
     });
 };
 
-// export const userLoginAsync = () => async dispatch => {
-//     await fetch("/api/")
-// }
+export const userLoginAsync = () => async dispatch => {
+  const res = await Axios.post("/api/users", {
+    email: "kevin@devleague.com",
+    name: "Kevin",
+    password: "kguo"
+  });
+  dispatch({
+    type: USER_LOGIN,
+    payload: res
+  });
+};
