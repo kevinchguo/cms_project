@@ -9,6 +9,8 @@ class Body extends Component {
     super(props);
     this.state = { filter: "" };
     this.handleOptionChange = this.handleOptionChange.bind(this);
+    this.displayCreatures = this.displayCreatures.bind(this);
+    this.sortCreatures = this.sortCreatures.bind(this);
   }
 
   componentDidMount() {
@@ -16,8 +18,7 @@ class Body extends Component {
   }
 
   displayCreatures = () => {
-    const sortedCreatures = this.sortCreatures();
-    return sortedCreatures.map(creature => {
+    return this.props.creatures.creatures.map(creature => {
       return (
         <Creature
           key={creature.id}
@@ -81,7 +82,10 @@ class Body extends Component {
             <option value="Price L-H">Price L-H</option>
           </select>
         </div>
-        <div className={styles.cards}>{this.displayCreatures()}</div>
+
+        {Object.keys(this.props.creatures).length > 0 && (
+          <div className={styles.cards}>{this.displayCreatures()}</div>
+        )}
       </>
     );
   }

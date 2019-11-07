@@ -9,11 +9,18 @@ class Login extends Component {
 
   render() {
     return (
-      <div className={styles.loginComponent}>
-        <h1>Login Page</h1>
-        <br />
-        <br />
-        <br />
+      <div className={styles.container}>
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+          <input
+            type="text"
+            name="email"
+            placeholder="email"
+            autoComplete="off"
+          />
+          <input type="password" name="password" placeholder="password" />
+          <button>Login</button>
+        </form>
       </div>
     );
   }
