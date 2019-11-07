@@ -19,8 +19,28 @@ categoryRouter.route('/')
         res.status(200).json(results);
     })
     .catch((err) => {
-        console.log('ERROR',err);
+        res.send(err);
     })
 })
+.put((req, res) => {
+    const putObj = req.body;
 
+    return new Category({'id': putObj.id}).fetch().then((category) => {
+        category.set({ 'category': putObj.category }).save();
+        res.send(category);
+    })
+    .catch(() => {
+        res.send('category id not found');
+    })
+})
+.delete((req, res) => {
+    const delId = req.body.id;
+
+    return new Category({'id': delId}).destroy().then(() => {
+        res.send('successfully deleted');
+    })
+    .catch(() => {
+        res.send('category id not found');
+    })
+})
 module.exports = categoryRouter;
