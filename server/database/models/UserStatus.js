@@ -1,4 +1,5 @@
 const bookshelf = require("../bookshelf");
+require("../models/User");
 
 class UserStatus extends bookshelf.Model {
   get tableName() {
@@ -6,6 +7,10 @@ class UserStatus extends bookshelf.Model {
   }
   get timestamps() {
     return true;
+  }
+
+  user() {
+    return this.belongsToMany("Users", "users");
   }
 }
 
