@@ -30,6 +30,7 @@ class Body extends Component {
 
   sortCreatures = () => {
     if (this.state.filter === "Newest") {
+      console.log("this is newest");
       return this.props.creatures;
     } else {
       return this.props.creatures;

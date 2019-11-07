@@ -3,6 +3,7 @@ require("./User");
 require("./Category");
 require("./CreatureStatus");
 require("./Condition");
+require("./Image");
 
 class Creature extends bookshelf.Model {
   get tableName() {
@@ -12,20 +13,24 @@ class Creature extends bookshelf.Model {
     return true;
   }
 
-  created_by() {
-    return this.hasOne("User", ["id"]);
+  user_id() {
+    return this.hasOne("User", "id", "user_id");
   }
 
-  category() {
-    return this.hasOne("Category", ["id"]);
+  category_id() {
+    return this.hasOne("Category", "id", "category_id");
   }
 
-  creature_status() {
-    return this.hasOne("CreatureStatus", "id");
+  creature_status_id() {
+    return this.hasOne("CreatureStatus", "id", "creature_status_id");
   }
 
-  condition() {
-    return this.hasOne("Condition", "id");
+  condition_id() {
+    return this.hasOne("Condition", "id", "condition_id");
+  }
+
+  image_url() {
+    return this.hasMany("Image");
   }
 }
 

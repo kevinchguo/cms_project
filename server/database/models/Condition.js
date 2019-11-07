@@ -1,4 +1,5 @@
 const bookshelf = require("../bookshelf");
+require("../models/Creature");
 
 class Condition extends bookshelf.Model {
   get tableName() {
