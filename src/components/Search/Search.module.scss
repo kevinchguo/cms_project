@@ -4,11 +4,8 @@
     width: 100%;
     height: 50px;
     padding: 10px;
+    border: none;
     border-bottom: 3px solid #7fffd4;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    background: #2591b5;
     background: #19647e;
     color: #ffffff;
     font-size: 1.5rem;
@@ -27,17 +24,18 @@
     outline: 0;
   }
   button {
-    background: none;
-    border: none;
-    color: #7fffd4;
     display: none;
   }
   @media screen and (max-width: 900px) {
     button {
+      color: #7fffd4;
+      background: none;
       display: inline-block;
       width: 15%;
-      border-bottom: 3px solid #7fffd4;
       height: 48px;
+      border: none;
+      border-bottom: 3px solid #7fffd4;
+      padding: 10px;
     }
     input {
       width: 85%;
