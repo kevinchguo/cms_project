@@ -33,7 +33,7 @@ class App extends Component {
         <div className={styles.appContainer}>
           <div className={styles.HeaderContainer}>
             <Header />
-            <button onClick={this.handleLogin}>Click Me</button>
+            {/* <button onClick={this.handleLogin}>Click Me</button> */}
           </div>
           <div className={styles.BodyContainer}>
             <div className={styles.Navbar}>

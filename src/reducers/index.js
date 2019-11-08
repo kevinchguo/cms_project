@@ -1,7 +1,9 @@
 import { LOAD_CREATURE } from "../actions";
 import { USER_LOGIN } from "../actions";
 
-const reducer = (state = {}, action) => {
+const intialState = { creatures: [], users: {} };
+
+const reducer = (state = intialState, action) => {
   switch (action.type) {
     case LOAD_CREATURE:
       return Object.assign({}, state, { creatures: action.payload });

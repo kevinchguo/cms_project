@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import styles from "./Login.module.scss";
 
+import Auth from "../../auth";
+
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.preventDefault();
   }
 
   render() {

@@ -18,7 +18,7 @@ class Search extends Component {
     return (
       <form className={styles.search} autoComplete="off">
         <input type="text" name="name" placeholder="Search..." />
-        <button onClick={this.handleClick}>
+        <button>
           <FontAwesomeIcon icon={faSearch} size="2x" />
         </button>
       </form>
