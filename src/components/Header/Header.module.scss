@@ -35,18 +35,13 @@
       width: 80px;
       text-align: center;
       background: #19647e;
-      box-shadow: 5px 5px;
       background: aquamarine;
       color: #19647e;
       font-family: "Montserrat", sans-serif;
       text-transform: uppercase;
       font-weight: bolder;
       cursor: pointer;
-      transition: 0.2s;
       padding: 5px;
-      &:hover {
-        color: #02b5bc;
-      }
     }
   }
 }
