@@ -2,6 +2,7 @@ import Axios from "axios";
 
 export const LOAD_CREATURE = "LOAD_CREATURE";
 export const USER_LOGIN = "USER_LOGIN";
+export const NEWEST_CREATURE = "NEWEST_CREATURE";
 
 export const loadCreatureAsync = () => async dispatch => {
   await fetch("/api/creatures")
@@ -29,4 +30,18 @@ export const userLoginAsync = () => async dispatch => {
     type: USER_LOGIN,
     payload: res
   });
+};
+
+export const sortCreatureNewest = () => async dispatch => {
+  await Axios.get("/api/creatures/newest")
+    .then(creatures => {
+      // console.log(creatures.data);
+      dispatch({
+        type: NEWEST_CREATURE,
+        payload: creatures.data
+      });
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
 };
