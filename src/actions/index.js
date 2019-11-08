@@ -19,12 +19,14 @@ export const loadCreatureAsync = () => async dispatch => {
     });
 };
 
-export const userLoginAsync = () => async dispatch => {
-  const res = await Axios.post("/api/users/login", {
-    email: "kevin@devleague.com",
-    name: "Kevin",
-    password: "kguo"
-  });
+const userDataTest = {
+  email: "kevin@devleague.com",
+  name: "Kevin",
+  password: "kguo"
+};
+
+export const userLoginAsync = data => async dispatch => {
+  const res = await Axios.post("/api/users/login", data);
   dispatch({
     type: USER_LOGIN,
     payload: res
