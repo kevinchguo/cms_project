@@ -9,10 +9,10 @@ exports.seed = function(knex) {
           status: "for_sale"
         },
         {
-          status: "sold"
+          status: "in_cart"
         },
         {
-          status: "in_cart"
+          status: "sold"
         }
       ]);
     });

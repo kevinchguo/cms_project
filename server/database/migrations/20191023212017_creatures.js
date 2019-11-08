@@ -23,6 +23,8 @@ exports.up = function(knex) {
       .unsigned()
       .references("conditions.id")
       .notNullable();
+    table.integer("price").notNullable();
+    table.string("sort_by_date").notNullable();
     table.timestamps(true, true);
   });
 };

@@ -27,6 +27,8 @@ class Body extends Component {
           category={creature.category_id.category}
           status={creature.creature_status_id.status}
           condition={creature.condition_id.condition}
+          price={creature.price}
+          sortDate={creature.sort_by_date}
           timestamp={creature.updated_at}
         />
       );
@@ -42,14 +44,6 @@ class Body extends Component {
       console.log("this is oldest");
       let oldest = this.props.creatures;
       return oldest;
-    } else if (this.state.filter === "Order A-Z") {
-      console.log("this is order a-z");
-      let orderAZ = this.props.creatures;
-      return orderAZ;
-    } else if (this.state.filter === "Order Z-A") {
-      console.log("this is order z-a");
-      let orderZA = this.props.creatures;
-      return orderZA;
     } else if (this.state.filter === "Price H-L") {
       console.log("this is price h-l");
       let priceHL = this.props.creatures;
@@ -75,8 +69,6 @@ class Body extends Component {
           <select className={styles.sorting} onChange={this.handleOptionChange}>
             <option value="Newest">Newest</option>
             <option value="Oldest">Oldest</option>
-            <option value="Order A-Z">Order A-Z</option>
-            <option value="Order Z-A">Order Z-A</option>
             <option value="Price H-L">Price H-L</option>
             <option value="Price L-H">Price L-H</option>
           </select>

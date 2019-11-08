@@ -10,6 +10,8 @@ const Creature = props => {
       <p>{props.category}</p>
       <p>{props.status}</p>
       <p>{props.condition}</p>
+      <p>{props.price}</p>
+      <p>{props.sortDate}</p>
       <p>{props.timestamp}</p>
     </div>
   );

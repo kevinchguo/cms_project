@@ -6,84 +6,104 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex("creatures").insert([
         {
-          name: "Cereopsis novaehollandiae",
-          description: "Optional reciprocal neural-net",
+          name: "Python, carpet",
+          description: "Morelia spilotes variegata",
+          user_id: 1,
+          category_id: 3,
+          creature_status_id: 1,
+          condition_id: 1,
+          price: 1438,
+          sort_by_date: "2019-08-24T12:03:39Z"
+        },
+        {
+          name: "Wolf, mexican",
+          description: "Canis lupus baileyi",
+          user_id: 1,
+          category_id: 2,
+          creature_status_id: 1,
+          condition_id: 1,
+          price: 613,
+          sort_by_date: "2019-05-10T21:03:53Z"
+        },
+        {
+          name: "Bleu, blue-breasted cordon",
+          description: "Uraeginthus angolensis",
           user_id: 2,
           category_id: 3,
           creature_status_id: 1,
-          condition_id: 2
+          condition_id: 5,
+          price: 3304,
+          sort_by_date: "2018-12-27T17:19:23Z"
         },
         {
-          name: "Physignathus cocincinus",
-          description: "Sharable client-driven knowledge base",
-          user_id: 3,
-          category_id: 1,
-          creature_status_id: 1,
-          condition_id: 2
-        },
-        {
-          name: "unavailable",
-          description: "Profound non-volatile throughput",
-          user_id: 3,
+          name: "Eastern box turtle",
+          description: "Terrapene carolina",
+          user_id: 1,
           category_id: 2,
           creature_status_id: 1,
-          condition_id: 2
+          condition_id: 5,
+          price: 9593,
+          sort_by_date: "2019-10-05T14:48:33Z"
         },
         {
-          name: "Choloepus hoffmani",
-          description: "Polarised disintermediate concept",
-          user_id: 3,
+          name: "Red-breasted nuthatch",
+          description: "Sitta canadensis",
+          user_id: 2,
           category_id: 3,
-          creature_status_id: 2,
-          condition_id: 1
+          creature_status_id: 1,
+          condition_id: 5,
+          price: 1188,
+          sort_by_date: "2019-01-09T04:02:04Z"
         },
         {
-          name: "Vanellus armatus",
-          description: "Organic stable hardware",
+          name: "Savanna baboon",
+          description: "Papio cynocephalus",
+          user_id: 1,
+          category_id: 1,
+          creature_status_id: 1,
+          condition_id: 5,
+          price: 7221,
+          sort_by_date: "2019-11-02T16:09:39Z"
+        },
+        {
+          name: "Woodpecker, red-headed",
+          description: "Melanerpes erythrocephalus",
+          user_id: 1,
+          category_id: 1,
+          creature_status_id: 1,
+          condition_id: 4,
+          price: 3710,
+          sort_by_date: "2019-09-03T18:26:51Z"
+        },
+        {
+          name: "Crowned hawk-eagle",
+          description: "Spizaetus coronatus",
           user_id: 3,
-          category_id: 3,
-          creature_status_id: 2,
-          condition_id: 4
+          category_id: 1,
+          creature_status_id: 1,
+          condition_id: 3,
+          price: 4954,
+          sort_by_date: "2019-08-31T17:05:38Z"
         },
         {
-          name: "Erinaceus frontalis",
-          description: "Implemented coherent ability",
+          name: "Indian mynah",
+          description: "Acridotheres tristis",
           user_id: 4,
           category_id: 1,
-          creature_status_id: 3,
-          condition_id: 3
+          creature_status_id: 1,
+          condition_id: 3,
+          price: 7446,
+          sort_by_date: "2019-05-23T22:12:13Z"
         },
         {
-          name: "Spermophilus tridecemlineatus",
-          description: "Visionary analyzing encoding",
+          name: "Eagle, tawny",
+          description: "Anitibyx armatus",
           user_id: 3,
           category_id: 4,
           creature_status_id: 1,
-          condition_id: 3
-        },
-        {
-          name: "Oxybelis fulgidus",
-          description: "Digitized hybrid productivity",
-          user_id: 1,
-          category_id: 4,
-          creature_status_id: 1,
-          condition_id: 2
-        },
-        {
-          name: "Aegypius tracheliotus",
-          description: "Right-sized non-volatile parallelism",
-          user_id: 4,
-          category_id: 3,
-          creature_status_id: 1,
-          condition_id: 3
-        },
-        {
-          name: "Irania gutteralis",
-          description: "Profound asynchronous encoding",
-          user_id: 4,
-          category_id: 4,
-          creature_status_id: 3,
-          condition_id: 2
+          condition_id: 2,
+          price: 5867,
+          sort_by_date: "2019-02-21T19:41:31Z"
         }
       ]);
     });
