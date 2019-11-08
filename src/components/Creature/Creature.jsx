@@ -5,7 +5,6 @@ const Creature = props => {
   return (
     <div className={styles.outerContainer}>
       <h3>{props.name}</h3>
-      <p>{props.description}</p>
       <p>{props.user}</p>
       <p>{props.category}</p>
       <p>{props.status}</p>
