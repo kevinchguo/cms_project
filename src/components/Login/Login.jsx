@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styles from "./Login.module.scss";
 
-import Auth from "../../auth";
+// import Auth from "../../auth";
 
 class Login extends Component {
   constructor(props) {
