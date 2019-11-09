@@ -80,7 +80,7 @@ class Body extends Component {
 
 const mapStateToProps = state => {
   return {
-    creatures: state
+    creatures: state.creatures
   };
 };
 
