@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Creature from '../../components/Creature';
-import { loadCreatureAsync } from '../../actions';
-import styles from './Body.module.scss';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Creature from "../../components/Creature";
+import { loadCreatureAsync, sortCreatureNewest } from "../../actions";
+import styles from "./Body.module.scss";
 
 class Body extends Component {
   constructor(props) {
@@ -16,8 +16,8 @@ class Body extends Component {
   }
 
   displayCreatures = () => {
-    const sortedCreatures = this.sortCreatures();
-    return sortedCreatures.map(creature => {
+    const sorted = this.sortCreatures();
+    return sorted.map(creature => {
       return (
         <Creature
           key={creature.id}
@@ -35,12 +35,11 @@ class Body extends Component {
   };
 
   sortCreatures = () => {
-    if (this.state.filter === 'Newest') {
-      console.log('this is newest');
-      let newest = this.props.creatures;
-      return newest;
-    } else if (this.state.filter === 'Oldest') {
-      console.log('this is oldest');
+    if (this.state.filter === "Newest") {
+      this.props.sortCreatureNewest();
+      return this.props.creatures;
+    } else if (this.state.filter === "Oldest") {
+      console.log("this is oldest");
       let oldest = this.props.creatures;
       return oldest;
     } else if (this.state.filter === 'Price H-L') {
@@ -61,18 +60,23 @@ class Body extends Component {
   }
 
   render() {
+    // console.log(this.props.creatures);
     return (
       <>
         <div className={styles.sort}>
           Sort by:
           <select className={styles.sorting} onChange={this.handleOptionChange}>
+            <option value="filter">filter by</option>
             <option value="Newest">Newest</option>
             <option value="Oldest">Oldest</option>
             <option value="Price H-L">Price H-L</option>
             <option value="Price L-H">Price L-H</option>
           </select>
         </div>
-        <div className={styles.cards}>{this.displayCreatures()}</div>
+
+        {Object.keys(this.props.creatures).length > 0 && (
+          <div className={styles.cards}>{this.displayCreatures()}</div>
+        )}
       </>
     );
   }
@@ -88,6 +92,9 @@ const mapDispatchToProps = dispatch => {
   return {
     loadCreatureAsync: () => {
       return dispatch(loadCreatureAsync());
+    },
+    sortCreatureNewest: () => {
+      return dispatch(sortCreatureNewest());
     }
   };
 };
