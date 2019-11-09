@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import Creature from "../../components/Creature";
-import { loadCreatureAsync } from "../../actions";
-import styles from "./Body.module.scss";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Creature from '../../components/Creature';
+import { loadCreatureAsync } from '../../actions';
+import styles from './Body.module.scss';
 
 class Body extends Component {
   constructor(props) {
     super(props);
-    this.state = { filter: "" };
+    this.state = { filter: '' };
     this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
@@ -35,20 +35,20 @@ class Body extends Component {
   };
 
   sortCreatures = () => {
-    if (this.state.filter === "Newest") {
-      console.log("this is newest");
+    if (this.state.filter === 'Newest') {
+      console.log('this is newest');
       let newest = this.props.creatures;
       return newest;
-    } else if (this.state.filter === "Oldest") {
-      console.log("this is oldest");
+    } else if (this.state.filter === 'Oldest') {
+      console.log('this is oldest');
       let oldest = this.props.creatures;
       return oldest;
-    } else if (this.state.filter === "Price H-L") {
-      console.log("this is price h-l");
+    } else if (this.state.filter === 'Price H-L') {
+      console.log('this is price h-l');
       let priceHL = this.props.creatures;
       return priceHL;
-    } else if (this.state.filter === "Price L-H") {
-      console.log("this is price l-h");
+    } else if (this.state.filter === 'Price L-H') {
+      console.log('this is price l-h');
       let priceLH = this.props.creatures;
       return priceLH;
     } else {
