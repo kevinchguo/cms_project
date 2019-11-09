@@ -7,7 +7,6 @@ import styles from "./Body.module.scss";
 class Body extends Component {
   constructor(props) {
     super(props);
-    this.state = { filter: '' };
     this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
@@ -16,8 +15,7 @@ class Body extends Component {
   }
 
   displayCreatures = () => {
-    const sorted = this.sortCreatures();
-    return sorted.map(creature => {
+    return this.props.creatures.map(creature => {
       return (
         <Creature
           key={creature.id}
@@ -34,33 +32,29 @@ class Body extends Component {
     });
   };
 
-  sortCreatures = () => {
-    if (this.state.filter === "Newest") {
+  handleOptionChange(event) {
+    if (event.target.value === "Newest") {
+      console.log("newest");
       this.props.sortCreatureNewest();
       return this.props.creatures;
-    } else if (this.state.filter === "Oldest") {
+    } else if (event.target.value === "Oldest") {
       console.log("this is oldest");
       let oldest = this.props.creatures;
       return oldest;
-    } else if (this.state.filter === 'Price H-L') {
-      console.log('this is price h-l');
+    } else if (event.target.value === "Price H-L") {
+      console.log("this is price h-l");
       let priceHL = this.props.creatures;
       return priceHL;
-    } else if (this.state.filter === 'Price L-H') {
-      console.log('this is price l-h');
+    } else if (event.target.value === "Price L-H") {
+      console.log("this is price l-h");
       let priceLH = this.props.creatures;
       return priceLH;
     } else {
       return this.props.creatures;
     }
-  };
-
-  handleOptionChange(event) {
-    this.setState({ filter: event.target.value });
   }
 
   render() {
-    // console.log(this.props.creatures);
     return (
       <>
         <div className={styles.sort}>

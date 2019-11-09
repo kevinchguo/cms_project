@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import styles from './Search.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { searchCreatureFunction } from '../../actions';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import styles from "./Search.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { searchCreatureFunction } from "../../actions";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.state = { keyword: '' };
+    this.state = { keyword: "" };
     this.handleClick = this.handleClick.bind(this);
     this.searchKeyword = this.searchKeyword.bind(this);
   }
@@ -32,7 +32,7 @@ class Search extends Component {
             placeholder="Search..."
           />
           <button
-            onSubmit={this.props.searchCreatureFunction(this.state.keyword)}
+          // onSubmit={this.props.searchCreatureFunction(this.state.keyword)}
           >
             <FontAwesomeIcon icon={faSearch} size="2x" />
           </button>
