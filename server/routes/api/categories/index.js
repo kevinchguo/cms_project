@@ -36,7 +36,7 @@ categoryRouter.route('/')
 .delete((req, res) => {
     const delId = req.body.id;
 
-    return new Category({'id': delId.id}).destroy().then(() => {
+    return new Category({'id': delId}).destroy().then(() => {
         res.status(200).send("successfully deleted");
     })
     .catch((err) => {
