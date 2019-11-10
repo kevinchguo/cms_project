@@ -30,17 +30,17 @@ categoryRouter.route('/')
         res.send(category);
     })
     .catch(() => {
-        res.send('category id not found');
+        res.status(400).json(category);
     })
 })
 .delete((req, res) => {
     const delId = req.body.id;
 
     return new Category({'id': delId}).destroy().then(() => {
-        res.send('successfully deleted');
+        res.status(200);
     })
     .catch(() => {
-        res.send('category id not found');
+        res.status(400);
     })
 })
 module.exports = categoryRouter;
