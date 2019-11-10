@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import Creature from "../../components/Creature";
-import { loadCreatureAsync, sortCreatureNewest } from "../../actions";
-import styles from "./Body.module.scss";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Creature from '../../components/Creature';
+import { loadCreatureAsync, sortCreatureNewest } from '../../actions';
+import styles from './Body.module.scss';
+import { string } from 'prop-types';
 
 class Body extends Component {
   constructor(props) {
@@ -16,15 +17,32 @@ class Body extends Component {
 
   displayCreatures = () => {
     return this.props.creatures.map(creature => {
+      let price = creature.price.toString().split('');
+      price.splice(-2, 0, '.');
       return (
         <Creature
           key={creature.id}
-          name={creature.name}
-          user={creature.user_id.name}
-          category={creature.category_id.category}
-          status={creature.creature_status_id.status}
-          condition={creature.condition_id.condition}
-          price={creature.price}
+          name={creature.name
+            .split(' ')
+            .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+            .join(' ')}
+          user={
+            creature.user_id.name.charAt(0).toUpperCase() +
+            creature.user_id.name.slice(1)
+          }
+          category={
+            creature.category_id.category.charAt(0).toUpperCase() +
+            creature.category_id.category.slice(1)
+          }
+          status={
+            creature.creature_status_id.status.charAt(0).toUpperCase() +
+            creature.creature_status_id.status.slice(1)
+          }
+          condition={
+            creature.condition_id.condition.charAt(0).toUpperCase() +
+            creature.condition_id.condition.slice(1)
+          }
+          price={`$${price.join('')}`}
           sortDate={creature.sort_by_date}
           timestamp={creature.updated_at}
         />
@@ -33,17 +51,17 @@ class Body extends Component {
   };
 
   handleOptionChange(event) {
-    if (event.target.value === "Newest") {
+    if (event.target.value === 'Newest') {
       this.props.sortCreatureNewest();
       return this.props.creatures;
-    } else if (event.target.value === "Oldest") {
+    } else if (event.target.value === 'Oldest') {
       this.props.sortCreatureOldest();
       return this.props.creatures;
-    } else if (event.target.value === "Price H-L") {
-      console.log("this is price h-l");
+    } else if (event.target.value === 'Price H-L') {
+      console.log('this is price h-l');
       this.props.sortCreatureHighest();
       return this.props.creatures;
-    } else if (event.target.value === "Price L-H") {
+    } else if (event.target.value === 'Price L-H') {
       this.props.sortCreatureLowest();
       return this.props.creatures;
     } else {

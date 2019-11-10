@@ -1,14 +1,14 @@
-const express = require("express");
+const express = require('express');
 const creatureRouter = express.Router();
-const knex = require("knex");
+const knex = require('knex');
 
-creatureRouter.route("/").get((req, res) => {
+creatureRouter.route('/').get((req, res) => {
   return req.db.Creature.fetchAll({
     withRelated: [
-      "user_id",
-      "category_id",
-      "creature_status_id",
-      "condition_id"
+      'user_id',
+      'category_id',
+      'creature_status_id',
+      'condition_id'
     ]
   })
     .then(creatures => {
@@ -20,16 +20,16 @@ creatureRouter.route("/").get((req, res) => {
     });
 });
 
-creatureRouter.route("/newest").get((req, res) => {
-  console.log("newest route works");
+creatureRouter.route('/newest').get((req, res) => {
+  console.log('newest route works');
   return req.db.Creature.forge()
-    .orderBy("sort_by_date", "DESC")
+    .orderBy('sort_by_date', 'DESC')
     .fetchAll({
       withRelated: [
-        "user_id",
-        "category_id",
-        "creature_status_id",
-        "condition_id"
+        'user_id',
+        'category_id',
+        'creature_status_id',
+        'condition_id'
       ]
     })
     .then(results => {
@@ -40,16 +40,16 @@ creatureRouter.route("/newest").get((req, res) => {
     });
 });
 
-creatureRouter.route("/oldest").get((req, res) => {
-  console.log("oldest route works");
+creatureRouter.route('/oldest').get((req, res) => {
+  console.log('oldest route works');
   return req.db.Creature.forge()
-    .orderBy("sort_by_date", "ASC")
+    .orderBy('sort_by_date', 'ASC')
     .fetchAll({
       withRelated: [
-        "user_id",
-        "category_id",
-        "creature_status_id",
-        "condition_id"
+        'user_id',
+        'category_id',
+        'creature_status_id',
+        'condition_id'
       ]
     })
     .then(results => {
@@ -60,16 +60,16 @@ creatureRouter.route("/oldest").get((req, res) => {
     });
 });
 
-creatureRouter.route("/highest").get((req, res) => {
-  console.log("newest route works");
+creatureRouter.route('/highest').get((req, res) => {
+  console.log('newest route works');
   return req.db.Creature.forge()
-    .orderBy("price", "DESC")
+    .orderBy('price', 'DESC')
     .fetchAll({
       withRelated: [
-        "user_id",
-        "category_id",
-        "creature_status_id",
-        "condition_id"
+        'user_id',
+        'category_id',
+        'creature_status_id',
+        'condition_id'
       ]
     })
     .then(results => {
@@ -80,16 +80,39 @@ creatureRouter.route("/highest").get((req, res) => {
     });
 });
 
-creatureRouter.route("/lowest").get((req, res) => {
-  console.log("newest route works");
+creatureRouter.route('/lowest').get((req, res) => {
+  console.log('newest route works');
   return req.db.Creature.forge()
-    .orderBy("price", "ASC")
+    .orderBy('price', 'ASC')
     .fetchAll({
       withRelated: [
-        "user_id",
-        "category_id",
-        "creature_status_id",
-        "condition_id"
+        'user_id',
+        'category_id',
+        'creature_status_id',
+        'condition_id'
+      ]
+    })
+    .then(results => {
+      res.status(200).json(results);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+creatureRouter.route('/search').post((req, res) => {
+  let keyword = req.body.data;
+  keyword.toLowerCase()[0].toUpperCase() + keyword.toLowerCase().slice(1);
+  console.log(typeof keyword, 'this is the keyword');
+  return req.db.Creature.forge()
+    .where('name', 'like', `%${keyword.toLowerCase()}%`)
+    .orderBy('sort_by_date', 'DESC')
+    .fetchAll({
+      withRelated: [
+        'user_id',
+        'category_id',
+        'creature_status_id',
+        'condition_id'
       ]
     })
     .then(results => {
