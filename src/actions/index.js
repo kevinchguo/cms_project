@@ -4,6 +4,9 @@ export const LOAD_CREATURE = "LOAD_CREATURE";
 export const USER_LOGIN = "USER_LOGIN";
 export const SEARCH_CREATURE = "SEARCH_CREATURE";
 export const NEWEST_CREATURE = "NEWEST_CREATURE";
+export const OLDEST_CREATURE = "OLDEST_CREATURE";
+export const HIGHEST_CREATURE = "HIGHEST_CREATURE";
+export const LOWEST_CREATURE = "LOWEST_CREATURE";
 
 export const loadCreatureAsync = () => async dispatch => {
   await fetch("/api/creatures")
@@ -39,7 +42,46 @@ export const sortCreatureNewest = () => async dispatch => {
   await Axios.get("/api/creatures/newest")
     .then(creatures => {
       dispatch({
+        type: OLDEST_CREATURE,
+        payload: creatures.data
+      });
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
+};
+
+export const sortCreatureOldest = () => async dispatch => {
+  await Axios.get("/api/creatures/oldest")
+    .then(creatures => {
+      dispatch({
         type: NEWEST_CREATURE,
+        payload: creatures.data
+      });
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
+};
+
+export const sortCreatureHighest = () => async dispatch => {
+  await Axios.get("/api/creatures/highest")
+    .then(creatures => {
+      dispatch({
+        type: HIGHEST_CREATURE,
+        payload: creatures.data
+      });
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
+};
+
+export const sortCreatureLowest = () => async dispatch => {
+  await Axios.get("/api/creatures/lowest")
+    .then(creatures => {
+      dispatch({
+        type: LOWEST_CREATURE,
         payload: creatures.data
       });
     })

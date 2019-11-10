@@ -11,7 +11,7 @@ class Body extends Component {
   }
 
   componentDidMount() {
-    this.props.loadCreatureAsync();
+    this.props.sortCreatureNewest();
   }
 
   displayCreatures = () => {
@@ -34,21 +34,18 @@ class Body extends Component {
 
   handleOptionChange(event) {
     if (event.target.value === "Newest") {
-      console.log("newest");
       this.props.sortCreatureNewest();
       return this.props.creatures;
     } else if (event.target.value === "Oldest") {
-      console.log("this is oldest");
-      let oldest = this.props.creatures;
-      return oldest;
+      this.props.sortCreatureOldest();
+      return this.props.creatures;
     } else if (event.target.value === "Price H-L") {
       console.log("this is price h-l");
-      let priceHL = this.props.creatures;
-      return priceHL;
+      this.props.sortCreatureHighest();
+      return this.props.creatures;
     } else if (event.target.value === "Price L-H") {
-      console.log("this is price l-h");
-      let priceLH = this.props.creatures;
-      return priceLH;
+      this.props.sortCreatureLowest();
+      return this.props.creatures;
     } else {
       return this.props.creatures;
     }
@@ -60,7 +57,6 @@ class Body extends Component {
         <div className={styles.sort}>
           Sort by:
           <select className={styles.sorting} onChange={this.handleOptionChange}>
-            <option value="filter">filter by</option>
             <option value="Newest">Newest</option>
             <option value="Oldest">Oldest</option>
             <option value="Price H-L">Price H-L</option>
