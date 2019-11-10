@@ -4,7 +4,7 @@ const categoryRouter = express.Router();
 
 categoryRouter.route('/')
 .get((req, res) => {
-    return new req.db.Category().fetchAll().then((categories) => {
+    return new Category().fetchAll().then((categories) => {
         res.json(categories);
     })
     .catch((err) => {
@@ -34,13 +34,13 @@ categoryRouter.route('/')
     })
 })
 .delete((req, res) => {
-    const delId = req.body.id;
+    const delId = req.body;
 
-    return new Category({'id': delId}).destroy().then(() => {
-        res.status(200);
+    return new Category({'id': delId.id}).destroy().then(() => {
+        res.status(200).send("successfully deleted");
     })
-    .catch(() => {
-        res.status(400);
+    .catch((err) => {
+        res.status(400).send(err);
     })
 })
 module.exports = categoryRouter;

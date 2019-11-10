@@ -1,9 +1,10 @@
 const express = require('express');
 const conditionRouter = express.Router();
+const Condition = require('../../../database/models/Condition');
 
 conditionRouter.route('/')
 .get((req, res) => {
-    return new req.db.Condition().fetchAll().then((conditions) => {
+    return new Condition().fetchAll().then((conditions) => {
         return res.json(conditions);
     })
     .catch((err) => {
@@ -33,13 +34,13 @@ conditionRouter.route('/')
     })
 })
 .delete((req, res) => {
-    const delId = req.body.id;
+    const delId = req.body;
 
-    return new Condition({'id': delId}).destroy().then(() => {
-        res.status(200);
+    return new Condition({'id': delId.id}).destroy().then(() => {
+        res.status(200).send('successfully deleted');
     })
-    .catch(() => {
-        res.status(400);
+    .catch((err) => {
+        res.status(400).send(err);
     })
 })
 
