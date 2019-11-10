@@ -1,7 +1,7 @@
 .search {
   width: 100%;
   input {
-    width: 100%;
+    width: 85%;
     height: 50px;
     padding: 10px;
     border: none;
@@ -24,8 +24,16 @@
     outline: 0;
   }
   button {
-    // display: none;
+    color: #7fffd4;
+    background: none;
+    display: inline-block;
+    width: 15%;
+    height: 48.5px;
+    border: none;
+    border-bottom: 3px solid #7fffd4;
+    padding: 10px;
   }
+
   @media screen and (max-width: 900px) {
     button {
       color: #7fffd4;

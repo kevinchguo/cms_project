@@ -1,9 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Creature from '../../components/Creature';
-import { loadCreatureAsync, sortCreatureNewest } from '../../actions';
-import styles from './Body.module.scss';
-import { string } from 'prop-types';
+
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Creature from "../../components/Creature";
+import {
+  loadCreatureAsync,
+  sortCreatureNewest,
+  sortCreatureHighest,
+  sortCreatureOldest,
+  sortCreatureLowest
+} from "../../actions";
+import styles from "./Body.module.scss";
 
 class Body extends Component {
   constructor(props) {
@@ -103,6 +109,15 @@ const mapDispatchToProps = dispatch => {
     },
     sortCreatureNewest: () => {
       return dispatch(sortCreatureNewest());
+    },
+    sortCreatureOldest: () => {
+      return dispatch(sortCreatureOldest());
+    },
+    sortCreatureHighest: () => {
+      return dispatch(sortCreatureHighest());
+    },
+    sortCreatureLowest: () => {
+      return dispatch(sortCreatureLowest());
     }
   };
 };
