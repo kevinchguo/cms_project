@@ -34,7 +34,7 @@ conditionRouter.route('/')
     })
 })
 .delete((req, res) => {
-    const delId = req.body;
+    const delId = req.body.id;
 
     return new Condition({'id': delId.id}).destroy().then(() => {
         res.status(200).send('successfully deleted');
