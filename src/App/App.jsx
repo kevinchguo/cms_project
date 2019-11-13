@@ -7,6 +7,7 @@ import Body from "../containers/Body";
 import Login from "../components/Login";
 import New from "../components/New";
 import Settings from "../components/Settings";
+import ViewCreatures from "../components/ViewCreature";
 import styles from "./App.module.scss";
 
 import { userLoginAsync } from "../actions/index";
@@ -46,6 +47,7 @@ class App extends Component {
                 <Route path="/login" component={Login} />
                 <Route path="/settings" component={Settings} />
                 <Route path="/New" component={New} />
+                <Route path="/view" component={ViewCreatures} />
               </Switch>
             </div>
           </div>
