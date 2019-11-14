@@ -6,22 +6,14 @@ import {
   sortCreatureNewest,
   sortCreatureHighest,
   sortCreatureOldest,
-  sortCreatureLowest,
-  filterCreatureLand,
-  filterCreatureWater,
-  filterCreatureSky,
-  filterCreatureMythical,
-  filterCreatureNewborn,
-  filterCreatureYoung,
-  filterCreatureAdult,
-  filterCreatureElder,
-  filterCreatureDeceased
+  sortCreatureLowest
 } from "../../actions";
 import styles from "./Body.module.scss";
 
 class Body extends Component {
   constructor(props) {
     super(props);
+    this.state = {};
     this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
@@ -29,8 +21,8 @@ class Body extends Component {
     this.props.sortCreatureNewest();
   }
 
-  displayCreatures = () => {
-    return this.props.creatures.map(creature => {
+  mapCreatures = data => {
+    return data.map(creature => {
       let price = creature.price.toString().split("");
       price.splice(-2, 0, ".");
       return (
@@ -65,6 +57,30 @@ class Body extends Component {
     });
   };
 
+  displayCreatures = () => {
+    if (!this.state.type && !this.state.age) {
+      return this.mapCreatures(this.props.creatures);
+    } else if (this.state.type && !this.state.age) {
+      let filterType = this.props.creatures.filter(data => {
+        return data.category_id.id === this.state.type;
+      });
+      return this.mapCreatures(filterType);
+    } else if (this.state.age && !this.state.type) {
+      let filterAge = this.props.creatures.filter(data => {
+        return data.condition_id.id === this.state.age;
+      });
+      return this.mapCreatures(filterAge);
+    } else if (this.state.age && this.state.type) {
+      let filterBoth = this.props.creatures.filter(data => {
+        return (
+          data.category_id.id === this.state.type &&
+          data.condition_id.id === this.state.age
+        );
+      });
+      return this.mapCreatures(filterBoth);
+    }
+  };
+
   handleOptionChange(event) {
     if (event.target.value === "Newest") {
       this.props.sortCreatureNewest();
@@ -79,32 +95,23 @@ class Body extends Component {
       this.props.sortCreatureLowest();
       return this.props.creatures;
     } else if (event.target.value === "Land") {
-      this.props.filterCreatureLand();
-      return this.props.creatures;
+      return this.setState({ type: 1 });
     } else if (event.target.value === "Water") {
-      this.props.filterCreatureWater();
-      return this.props.creatures;
+      return this.setState({ type: 2 });
     } else if (event.target.value === "Sky") {
-      this.props.filterCreatureSky();
-      return this.props.creatures;
+      return this.setState({ type: 3 });
     } else if (event.target.value === "Mythical") {
-      this.props.filterCreatureMythical();
-      return this.props.creatures;
+      return this.setState({ type: 4 });
     } else if (event.target.value === "Newborn") {
-      this.props.filterCreatureNewborn();
-      return this.props.creatures;
+      return this.setState({ age: 1 });
     } else if (event.target.value === "Young") {
-      this.props.filterCreatureYoung();
-      return this.props.creatures;
+      return this.setState({ age: 2 });
     } else if (event.target.value === "Adult") {
-      this.props.filterCreatureAdult();
-      return this.props.creatures;
+      return this.setState({ age: 3 });
     } else if (event.target.value === "Elder") {
-      this.props.filterCreatureElder();
-      return this.props.creatures;
+      return this.setState({ age: 4 });
     } else if (event.target.value === "Deceased") {
-      this.props.filterCreatureDeceased();
-      return this.props.creatures;
+      return this.setState({ age: 5 });
     } else if (event.target.value === "Default") {
       this.props.loadCreatureAsync();
       return this.props.creatures;
@@ -114,6 +121,7 @@ class Body extends Component {
   }
 
   render() {
+    console.log(this.props.creatures);
     return (
       <>
         <div className={styles.sort}>
@@ -125,11 +133,14 @@ class Body extends Component {
             <option value="Price L-H">Price L-H</option>
           </select>
           <select className={styles.select} onChange={this.handleOptionChange}>
-            <option value="Default">Filter By</option>
+            <option value="DefaultType">Filter By Type</option>
             <option value="Land">Land</option>
             <option value="Water">Water</option>
             <option value="Sky">Sky</option>
             <option value="Mythical">Mythical</option>
+          </select>
+          <select className={styles.select} onChange={this.handleOptionChange}>
+            <option value="DefaultAge">Filter By Age</option>
             <option value="Newborn">Newborn</option>
             <option value="Young">Young</option>
             <option value="Adult">Adult</option>
@@ -168,33 +179,6 @@ const mapDispatchToProps = dispatch => {
     },
     sortCreatureLowest: () => {
       return dispatch(sortCreatureLowest());
-    },
-    filterCreatureLand: () => {
-      return dispatch(filterCreatureLand());
-    },
-    filterCreatureWater: () => {
-      return dispatch(filterCreatureWater());
-    },
-    filterCreatureSky: () => {
-      return dispatch(filterCreatureSky());
-    },
-    filterCreatureMythical: () => {
-      return dispatch(filterCreatureMythical());
-    },
-    filterCreatureNewborn: () => {
-      return dispatch(filterCreatureNewborn());
-    },
-    filterCreatureYoung: () => {
-      return dispatch(filterCreatureYoung());
-    },
-    filterCreatureAdult: () => {
-      return dispatch(filterCreatureAdult());
-    },
-    filterCreatureElder: () => {
-      return dispatch(filterCreatureElder());
-    },
-    filterCreatureDeceased: () => {
-      return dispatch(filterCreatureDeceased());
     }
   };
 };

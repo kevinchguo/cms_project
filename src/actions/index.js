@@ -7,15 +7,6 @@ export const NEWEST_CREATURE = "NEWEST_CREATURE";
 export const OLDEST_CREATURE = "OLDEST_CREATURE";
 export const HIGHEST_CREATURE = "HIGHEST_CREATURE";
 export const LOWEST_CREATURE = "LOWEST_CREATURE";
-export const LAND_CREATURE = "LAND_CREATURE";
-export const WATER_CREATURE = "WATER_CREATURE";
-export const SKY_CREATURE = "SKY_CREATURE";
-export const MYTHICAL_CREATURE = "MYTHICAL_CREATURE";
-export const NEWBORN_CREATURE = "NEWBORN_CREATURE";
-export const YOUNG_CREATURE = "YOUNG_CREATURE";
-export const ADULT_CREATURE = "ADULT_CREATURE";
-export const ELDER_CREATURE = "ELDER_CREATURE";
-export const DECEASED_CREATURE = "DECEASED_CREATURE";
 export const VIEW_CREATURE = "VIEW_CREATURE";
 export const CLEAR = "CLEAR";
 
@@ -106,123 +97,6 @@ export const searchCreatureFunction = data => async dispatch => {
     .then(creatures => {
       dispatch({
         type: SEARCH_CREATURE,
-        payload: creatures.data
-      });
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-};
-
-export const filterCreatureLand = () => async dispatch => {
-  await Axios.get("/api/creatures/land")
-    .then(creatures => {
-      dispatch({
-        type: LAND_CREATURE,
-        payload: creatures.data
-      });
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-};
-
-export const filterCreatureWater = () => async dispatch => {
-  await Axios.get("/api/creatures/water")
-    .then(creatures => {
-      dispatch({
-        type: WATER_CREATURE,
-        payload: creatures.data
-      });
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-};
-
-export const filterCreatureSky = () => async dispatch => {
-  await Axios.get("/api/creatures/sky")
-    .then(creatures => {
-      dispatch({
-        type: SKY_CREATURE,
-        payload: creatures.data
-      });
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-};
-
-export const filterCreatureMythical = () => async dispatch => {
-  await Axios.get("/api/creatures/mythical")
-    .then(creatures => {
-      dispatch({
-        type: MYTHICAL_CREATURE,
-        payload: creatures.data
-      });
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-};
-
-export const filterCreatureNewborn = () => async dispatch => {
-  await Axios.get("/api/creatures/newborn")
-    .then(creatures => {
-      dispatch({
-        type: NEWBORN_CREATURE,
-        payload: creatures.data
-      });
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-};
-
-export const filterCreatureYoung = () => async dispatch => {
-  await Axios.get("/api/creatures/young")
-    .then(creatures => {
-      dispatch({
-        type: YOUNG_CREATURE,
-        payload: creatures.data
-      });
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-};
-
-export const filterCreatureAdult = () => async dispatch => {
-  await Axios.get("/api/creatures/adult")
-    .then(creatures => {
-      dispatch({
-        type: ADULT_CREATURE,
-        payload: creatures.data
-      });
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-};
-
-export const filterCreatureElder = () => async dispatch => {
-  await Axios.get("/api/creatures/elder")
-    .then(creatures => {
-      dispatch({
-        type: ELDER_CREATURE,
-        payload: creatures.data
-      });
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-};
-
-export const filterCreatureDeceased = () => async dispatch => {
-  await Axios.get("/api/creatures/deceased")
-    .then(creatures => {
-      dispatch({
-        type: DECEASED_CREATURE,
         payload: creatures.data
       });
     })
