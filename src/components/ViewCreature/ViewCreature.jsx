@@ -43,6 +43,10 @@ class ViewCreature extends Component {
               <p>{`Posted: ${timeAgo.format(
                 new Date(this.props.creatures[0].sort_by_date)
               )}`}</p>
+              <div className={styles.buttonContainer}>
+                <button onClick={this.handleClickEdit}>Edit</button>
+                <button onClick={this.handleClickDelete}>Delete</button>
+              </div>
             </div>
           ) : (
             ''
@@ -59,6 +63,9 @@ const mapStateToProps = state => {
   };
 };
 
-ViewCreature = connect(mapStateToProps, null)(ViewCreature);
+ViewCreature = connect(
+  mapStateToProps,
+  null
+)(ViewCreature);
 
 export default ViewCreature;
