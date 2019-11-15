@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Creature from '../../components/Creature';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Creature from "../../components/Creature";
 import {
   loadCreatureAsync,
   sortCreatureNewest,
   sortCreatureHighest,
   sortCreatureOldest,
   sortCreatureLowest
-} from '../../actions';
-import styles from './Body.module.scss';
+} from "../../actions";
+import styles from "./Body.module.scss";
 
 class Body extends Component {
   constructor(props) {
@@ -21,23 +21,36 @@ class Body extends Component {
     this.props.sortCreatureNewest();
   }
 
+  convertPrice = data => {
+    let price = data.toString().split("");
+    if (data < 10) {
+      price.unshift("0.0");
+    } else if (data < 100) {
+      price.unshift("0.");
+    } else {
+      price.splice(-2, 0, ".");
+    }
+    price.unshift("$");
+    return price.join("");
+  };
+
+
   mapCreatures = data => {
     return data.map(creature => {
-      let price = creature.price.toString().split('');
-      price.splice(-2, 0, '.');
+      let price = this.convertPrice(creature.price);
       const months = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
       ];
       let datePost = new Date(creature.sort_by_date);
       return (
@@ -45,9 +58,9 @@ class Body extends Component {
           id={creature.id}
           key={creature.id}
           name={creature.name
-            .split(' ')
+            .split(" ")
             .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-            .join(' ')}
+            .join(" ")}
           user={
             creature.user_id.name.charAt(0).toUpperCase() +
             creature.user_id.name.slice(1)
@@ -64,7 +77,7 @@ class Body extends Component {
             creature.condition_id.condition.charAt(0).toUpperCase() +
             creature.condition_id.condition.slice(1)
           }
-          price={`$${price.join('')}`}
+          price={price}
           sortDate={`${months[datePost.getMonth()]} ${datePost.getDay()}`}
         />
       );
@@ -96,37 +109,37 @@ class Body extends Component {
   };
 
   handleOptionChange(event) {
-    if (event.target.value === 'Newest') {
+    if (event.target.value === "Newest") {
       this.props.sortCreatureNewest();
       return this.props.creatures;
-    } else if (event.target.value === 'Oldest') {
+    } else if (event.target.value === "Oldest") {
       this.props.sortCreatureOldest();
       return this.props.creatures;
-    } else if (event.target.value === 'Price H-L') {
+    } else if (event.target.value === "Price H-L") {
       this.props.sortCreatureHighest();
       return this.props.creatures;
-    } else if (event.target.value === 'Price L-H') {
+    } else if (event.target.value === "Price L-H") {
       this.props.sortCreatureLowest();
       return this.props.creatures;
-    } else if (event.target.value === 'Land') {
+    } else if (event.target.value === "Land") {
       return this.setState({ type: 1 });
-    } else if (event.target.value === 'Water') {
+    } else if (event.target.value === "Water") {
       return this.setState({ type: 2 });
-    } else if (event.target.value === 'Sky') {
+    } else if (event.target.value === "Sky") {
       return this.setState({ type: 3 });
-    } else if (event.target.value === 'Mythical') {
+    } else if (event.target.value === "Mythical") {
       return this.setState({ type: 4 });
-    } else if (event.target.value === 'Newborn') {
+    } else if (event.target.value === "Newborn") {
       return this.setState({ age: 1 });
-    } else if (event.target.value === 'Young') {
+    } else if (event.target.value === "Young") {
       return this.setState({ age: 2 });
-    } else if (event.target.value === 'Adult') {
+    } else if (event.target.value === "Adult") {
       return this.setState({ age: 3 });
-    } else if (event.target.value === 'Elder') {
+    } else if (event.target.value === "Elder") {
       return this.setState({ age: 4 });
-    } else if (event.target.value === 'Deceased') {
+    } else if (event.target.value === "Deceased") {
       return this.setState({ age: 5 });
-    } else if (event.target.value === 'Default') {
+    } else if (event.target.value === "Default") {
       this.props.loadCreatureAsync();
       return this.props.creatures;
     } else {
@@ -135,7 +148,6 @@ class Body extends Component {
   }
 
   render() {
-    console.log(this.props.creatures);
     return (
       <>
         <div className={styles.sort}>
@@ -197,6 +209,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-Body = connect(mapStateToProps, mapDispatchToProps)(Body);
+Body = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Body);
 
 export default Body;
