@@ -1,51 +1,71 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import styles from './ViewCreature.module.scss';
-import TimeAgo from 'javascript-time-ago';
-import en from 'javascript-time-ago/locale/en';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import styles from "./ViewCreature.module.scss";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 
 class ViewCreature extends Component {
   constructor(props) {
     super(props);
-    this.state = { price: '' };
+    this.state = {};
     this.convertPrice = this.convertPrice.bind(this);
   }
 
-  convertPrice = () => {
-    let price = this.props.creatures[0].price.toString().split('');
-    return price;
+  convertPrice = data => {
+    let price = data.toString().split("");
+    if (data < 10) {
+      price.unshift("0.0");
+    } else if (data < 100) {
+      price.unshift("0.");
+    } else {
+      price.splice(-2, 0, ".");
+    }
+    price.unshift("$");
+    return price.join("");
   };
-
-  // componentDidMount() {
-  //   return this.setState({
-  //     price: this.props.creatures[0].price.toString().split('')
-  //   });
-  // }
 
   render() {
     TimeAgo.addLocale(en);
-    const timeAgo = new TimeAgo('en-US');
-    console.log(this.convertPrice);
-    // let price = this.props.creatures[0].price.toString().split('');
-    // price.splice(-2, 0, '.');
+    const timeAgo = new TimeAgo("en-US");
     return (
       <div>
         <h1>
           {Object.keys(this.props.creatures).length > 0 ? (
             <div className={styles.container}>
-              <h3>{this.props.creatures[0].name}</h3>
-              <p>{this.props.creatures[0].description}</p>
-              <p>{this.props.creatures[0].user_id.name}</p>
-              <p>{this.props.creatures[0].category_id.category}</p>
+              <h3>
+                {this.props.creatures[0].name
+                  .split(" ")
+                  .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                  .join(" ")}
+              </h3>
+              <p>
+                {this.props.creatures[0].description.charAt(0).toUpperCase() +
+                  this.props.creatures[0].description.slice(1)}
+              </p>
+              <p>
+                {this.props.creatures[0].user_id.name.charAt(0).toUpperCase() +
+                  this.props.creatures[0].user_id.name.slice(1)}
+              </p>
+              <p>
+                {this.props.creatures[0].category_id.category
+                  .charAt(0)
+                  .toUpperCase() +
+                  this.props.creatures[0].category_id.category.slice(1)}
+              </p>
               <p>{this.props.creatures[0].creature_status_id.status}</p>
-              <p>{this.props.creatures[0].condition_id.condition}</p>
-              <p>{this.convertPrice().join('')}</p>
+              <p>
+                {this.props.creatures[0].condition_id.condition
+                  .charAt(0)
+                  .toUpperCase() +
+                  this.props.creatures[0].condition_id.condition.slice(1)}
+              </p>
+              <p>{this.convertPrice(this.props.creatures[0].price)}</p>
               <p>{`Posted: ${timeAgo.format(
                 new Date(this.props.creatures[0].sort_by_date)
               )}`}</p>
             </div>
           ) : (
-            ''
+            ""
           )}
         </h1>
       </div>
@@ -59,6 +79,9 @@ const mapStateToProps = state => {
   };
 };
 
-ViewCreature = connect(mapStateToProps, null)(ViewCreature);
+ViewCreature = connect(
+  mapStateToProps,
+  null
+)(ViewCreature);
 
 export default ViewCreature;
