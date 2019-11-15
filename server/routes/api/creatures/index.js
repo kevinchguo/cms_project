@@ -10,7 +10,8 @@ creatureRouter
         "user_id",
         "category_id",
         "creature_status_id",
-        "condition_id"
+        "condition_id",
+        'image_id'
       ]
     })
       .then(creatures => {

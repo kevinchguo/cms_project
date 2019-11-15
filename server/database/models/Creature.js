@@ -29,8 +29,8 @@ class Creature extends bookshelf.Model {
     return this.hasOne("Condition", "id", "condition_id");
   }
 
-  image_url() {
-    return this.hasMany("Image");
+  image_id() {
+    return this.hasMany('Image');
   }
 }
 
