@@ -19,7 +19,12 @@
 }
 
 @media screen and (max-width: 900px) {
+  .link {
+    width: 100%;
+    margin: 10px;
+  }
   .outerContainer {
     width: 100%;
+    margin: 0px;
   }
 }

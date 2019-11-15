@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { AddCreature } from "../../actions";
+import { connect } from "react-redux";
 import styles from "./New.module.scss";
 
 class New extends Component {
@@ -7,19 +9,25 @@ class New extends Component {
     this.state = {
       name: "",
       description: "",
-      user_id: "",
-      category_id: "",
-      creature_status_id: "",
-      condition_id: "",
-      price: 0
+      user_id: 1,
+      category_id: 1,
+      creature_status_id: 1,
+      condition_id: 1,
+      price: 0,
+      sort_by_date: "2019-08-24T12:03:39Z"
     };
+
     this.handleClick = this.handleClick.bind(this);
     this.handleNameInput = this.handleNameInput.bind(this);
     this.handleDescInput = this.handleDescInput.bind(this);
+    this.handlePriceInput = this.handlePriceInput.bind(this);
+    this.handleCategoryInput = this.handleCategoryInput.bind(this);
+    this.handleConditionInput = this.handleConditionInput.bind(this);
   }
 
   handleClick(e) {
     e.preventDefault();
+    this.props.AddCreature(this.state);
   }
 
   handleNameInput(e) {
@@ -28,6 +36,18 @@ class New extends Component {
 
   handleDescInput(e) {
     this.setState({ description: e.target.value });
+  }
+
+  handlePriceInput(e) {
+    this.setState({ price: parseInt(e.target.value) });
+  }
+
+  handleCategoryInput(e) {
+    this.setState({ category_id: parseInt(e.target.value) });
+  }
+
+  handleConditionInput(e) {
+    this.setState({ condition_id: parseInt(e.target.value) });
   }
 
   render() {
@@ -54,15 +74,22 @@ class New extends Component {
             name="price"
             placeholder="$0.00"
             autoComplete="off"
+            onChange={this.handlePriceInput}
           />
           <div className={styles.selectContainer}>
-            <select className={styles.select}>
+            <select
+              className={styles.select}
+              onChange={this.handleCategoryInput}
+            >
               <option value="1">Land</option>
               <option value="2">Water</option>
               <option value="3">Sky</option>
               <option value="4">Mythical</option>
             </select>
-            <select className={styles.select}>
+            <select
+              className={styles.select}
+              onChange={this.handleConditionInput}
+            >
               <option value="1">Newborn</option>
               <option value="2">Young</option>
               <option value="3">Adult</option>
@@ -87,5 +114,15 @@ class New extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    AddCreature: data => {
+      return dispatch(AddCreature(data));
+    }
+  };
+};
+
+New = connect(null, mapDispatchToProps)(New);
 
 export default New;

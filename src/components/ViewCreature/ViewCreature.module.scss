@@ -1,0 +1,14 @@
+.container {
+  border: 1px solid black;
+  background: rgb(238, 236, 236);
+  padding: 20px;
+  font-family: "Quicksand", sans-serif;
+  width: 50%;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    width: 100%;
+    margin: 10px;
+  }
+}

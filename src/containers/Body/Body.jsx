@@ -183,9 +183,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-Body = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Body);
+Body = connect(mapStateToProps, mapDispatchToProps)(Body);
 
 export default Body;
