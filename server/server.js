@@ -23,8 +23,8 @@ const client = redis.createClient({ url: process.env.REDIS_URL });
 const categoryRoutes = require("./routes/api/categories");
 const conditionRoutes = require("./routes/api/conditions");
 const creatureStatusRoutes = require("./routes/api/creature_statuses");
-const creatureRoutes = require("./routes/api/creatures/index");
-const imageRoutes = require("./routes/api/images/image.upload");
+const creatureRoutes = require("./routes/api/creatures/");
+const imageRoutes = require("./routes/api/images");
 const userStatusRoutes = require("./routes/api/user_statuses");
 const userRoutes = require("./routes/api/users");
 
