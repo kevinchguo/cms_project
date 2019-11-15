@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import Creature from "../../components/Creature";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Creature from '../../components/Creature';
 import {
   loadCreatureAsync,
   sortCreatureNewest,
@@ -16,8 +16,8 @@ import {
   filterCreatureAdult,
   filterCreatureElder,
   filterCreatureDeceased
-} from "../../actions";
-import styles from "./Body.module.scss";
+} from '../../actions';
+import styles from './Body.module.scss';
 
 class Body extends Component {
   constructor(props) {
@@ -31,16 +31,31 @@ class Body extends Component {
 
   displayCreatures = () => {
     return this.props.creatures.map(creature => {
-      let price = creature.price.toString().split("");
-      price.splice(-2, 0, ".");
+      let price = creature.price.toString().split('');
+      price.splice(-2, 0, '.');
+      const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ];
+      let datePost = new Date(creature.sort_by_date);
       return (
         <Creature
           id={creature.id}
           key={creature.id}
           name={creature.name
-            .split(" ")
+            .split(' ')
             .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-            .join(" ")}
+            .join(' ')}
           user={
             creature.user_id.name.charAt(0).toUpperCase() +
             creature.user_id.name.slice(1)
@@ -57,55 +72,54 @@ class Body extends Component {
             creature.condition_id.condition.charAt(0).toUpperCase() +
             creature.condition_id.condition.slice(1)
           }
-          price={`$${price.join("")}`}
-          sortDate={creature.sort_by_date}
-          timestamp={creature.updated_at}
+          price={`$${price.join('')}`}
+          sortDate={`${months[datePost.getMonth()]} ${datePost.getDay()}`}
         />
       );
     });
   };
 
   handleOptionChange(event) {
-    if (event.target.value === "Newest") {
+    if (event.target.value === 'Newest') {
       this.props.sortCreatureNewest();
       return this.props.creatures;
-    } else if (event.target.value === "Oldest") {
+    } else if (event.target.value === 'Oldest') {
       this.props.sortCreatureOldest();
       return this.props.creatures;
-    } else if (event.target.value === "Price H-L") {
+    } else if (event.target.value === 'Price H-L') {
       this.props.sortCreatureHighest();
       return this.props.creatures;
-    } else if (event.target.value === "Price L-H") {
+    } else if (event.target.value === 'Price L-H') {
       this.props.sortCreatureLowest();
       return this.props.creatures;
-    } else if (event.target.value === "Land") {
+    } else if (event.target.value === 'Land') {
       this.props.filterCreatureLand();
       return this.props.creatures;
-    } else if (event.target.value === "Water") {
+    } else if (event.target.value === 'Water') {
       this.props.filterCreatureWater();
       return this.props.creatures;
-    } else if (event.target.value === "Sky") {
+    } else if (event.target.value === 'Sky') {
       this.props.filterCreatureSky();
       return this.props.creatures;
-    } else if (event.target.value === "Mythical") {
+    } else if (event.target.value === 'Mythical') {
       this.props.filterCreatureMythical();
       return this.props.creatures;
-    } else if (event.target.value === "Newborn") {
+    } else if (event.target.value === 'Newborn') {
       this.props.filterCreatureNewborn();
       return this.props.creatures;
-    } else if (event.target.value === "Young") {
+    } else if (event.target.value === 'Young') {
       this.props.filterCreatureYoung();
       return this.props.creatures;
-    } else if (event.target.value === "Adult") {
+    } else if (event.target.value === 'Adult') {
       this.props.filterCreatureAdult();
       return this.props.creatures;
-    } else if (event.target.value === "Elder") {
+    } else if (event.target.value === 'Elder') {
       this.props.filterCreatureElder();
       return this.props.creatures;
-    } else if (event.target.value === "Deceased") {
+    } else if (event.target.value === 'Deceased') {
       this.props.filterCreatureDeceased();
       return this.props.creatures;
-    } else if (event.target.value === "Default") {
+    } else if (event.target.value === 'Default') {
       this.props.loadCreatureAsync();
       return this.props.creatures;
     } else {
@@ -199,9 +213,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-Body = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Body);
+Body = connect(mapStateToProps, mapDispatchToProps)(Body);
 
 export default Body;
