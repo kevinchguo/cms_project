@@ -18,6 +18,7 @@ export const ELDER_CREATURE = "ELDER_CREATURE";
 export const DECEASED_CREATURE = "DECEASED_CREATURE";
 export const VIEW_CREATURE = "VIEW_CREATURE";
 export const CLEAR = "CLEAR";
+export const ADD_CREATURE = "ADD_CREATURE";
 
 export const loadCreatureAsync = () => async dispatch => {
   await fetch("/api/creatures")
@@ -249,4 +250,17 @@ export const Clear = () => dispatch => {
     type: CLEAR,
     payload: ""
   });
+};
+
+export const AddCreature = data => async dispatch => {
+  await Axios.post("/api/creatures", data)
+    .then(creature => {
+      dispatch({
+        type: ADD_CREATURE,
+        payload: creature.data
+      });
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
 };

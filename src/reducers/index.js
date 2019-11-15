@@ -15,7 +15,8 @@ import {
   ELDER_CREATURE,
   DECEASED_CREATURE,
   VIEW_CREATURE,
-  CLEAR
+  CLEAR,
+  ADD_CREATURE
 } from "../actions";
 import { USER_LOGIN } from "../actions";
 
@@ -59,6 +60,10 @@ const reducer = (state = intialState, action) => {
       return Object.assign({}, state, { singleCreatures: action.payload });
     case CLEAR:
       return Object.assign({}, state, { singleCreatures: action.payload });
+    case ADD_CREATURE:
+      return Object.assign({}, state, {
+        creatures: [...action.payload]
+      });
     default:
       return state;
   }

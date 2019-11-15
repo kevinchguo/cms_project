@@ -23,7 +23,7 @@ creatureRouter
   })
   .post((req, res) => {
     const creature = req.body;
-
+    console.log(req.body);
     return new Creature(creature)
       .save()
       .then(results => {
