@@ -9,7 +9,7 @@ class Image extends bookshelf.Model {
   }
 
   creature_id() {
-    return this.belongsToMany("Creature", "creatures");
+    return this.hasOne("Creature", "id", "creature_id");
   }
 }
 

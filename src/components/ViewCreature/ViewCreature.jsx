@@ -32,7 +32,7 @@ class ViewCreature extends Component {
       <div>
         <h1>
           {Object.keys(this.props.creatures).length > 0 ? (
-            <div className={styles.outerContainer}>
+            <div className={styles.container}>
               <h3>{this.props.creatures[0].name}</h3>
               <p>{this.props.creatures[0].description}</p>
               <p>{this.props.creatures[0].user_id.name}</p>

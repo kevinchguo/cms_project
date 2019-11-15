@@ -5,7 +5,9 @@ exports.up = function(knex) {
     table
       .integer("creature_id")
       .unsigned()
-      .references("creatures.id");
+      .references("creatures.id")
+      .notNullable();
+    table.timestamps(true, true);
   });
 };
 

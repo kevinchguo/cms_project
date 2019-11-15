@@ -5,17 +5,9 @@ import {
   OLDEST_CREATURE,
   HIGHEST_CREATURE,
   LOWEST_CREATURE,
-  LAND_CREATURE,
-  WATER_CREATURE,
-  SKY_CREATURE,
-  MYTHICAL_CREATURE,
-  NEWBORN_CREATURE,
-  YOUNG_CREATURE,
-  ADULT_CREATURE,
-  ELDER_CREATURE,
-  DECEASED_CREATURE,
   VIEW_CREATURE,
-  CLEAR
+  CLEAR,
+  ADD_CREATURE
 } from "../actions";
 import { USER_LOGIN } from "../actions";
 
@@ -37,28 +29,14 @@ const reducer = (state = intialState, action) => {
       return Object.assign({}, state, { creatures: action.payload });
     case SEARCH_CREATURE:
       return Object.assign({}, state, { creatures: action.payload });
-    case LAND_CREATURE:
-      return Object.assign({}, state, { creatures: action.payload });
-    case WATER_CREATURE:
-      return Object.assign({}, state, { creatures: action.payload });
-    case SKY_CREATURE:
-      return Object.assign({}, state, { creatures: action.payload });
-    case MYTHICAL_CREATURE:
-      return Object.assign({}, state, { creatures: action.payload });
-    case NEWBORN_CREATURE:
-      return Object.assign({}, state, { creatures: action.payload });
-    case YOUNG_CREATURE:
-      return Object.assign({}, state, { creatures: action.payload });
-    case ADULT_CREATURE:
-      return Object.assign({}, state, { creatures: action.payload });
-    case ELDER_CREATURE:
-      return Object.assign({}, state, { creatures: action.payload });
-    case DECEASED_CREATURE:
-      return Object.assign({}, state, { creatures: action.payload });
     case VIEW_CREATURE:
       return Object.assign({}, state, { singleCreatures: action.payload });
     case CLEAR:
       return Object.assign({}, state, { singleCreatures: action.payload });
+    case ADD_CREATURE:
+      return Object.assign({}, state, {
+        creatures: [...action.payload]
+      });
     default:
       return state;
   }
