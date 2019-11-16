@@ -20,12 +20,14 @@ export let obj, img;
 const reducer = (state = intialState, action) => {
   switch (action.type) {
     case LOAD_CREATURE:
+      console.log('asdfasfd', action.payload);
       return Object.assign({}, state, { creatures: action.payload });
     case USER_LOGIN:
       return Object.assign({}, state, { users: action.payload });
     case NEWEST_CREATURE:
       return Object.assign({}, state, { creatures: action.payload });
     case OLDEST_CREATURE:
+        console.log("NEWEST", action.payload)
       return Object.assign({}, state, { creatures: action.payload });
     case HIGHEST_CREATURE:
       return Object.assign({}, state, { creatures: action.payload });
@@ -41,14 +43,13 @@ const reducer = (state = intialState, action) => {
       img = action.payload;
       return Object.assign({}, state, { imageURL: action.payload });
     case ADD_CREATURE:
-      console.log('PAYLOAD', action.payload);
       obj = action.payload;
       return Object.assign({}, state, {
-        creatures: {...action.payload}      
+        creatures: [...action.payload]     
       });
     case ADD_IMAGE:
       return Object.assign({}, state, {
-        images: {...action.payload}
+        images: [...action.payload]
       });
     default:
       return state;

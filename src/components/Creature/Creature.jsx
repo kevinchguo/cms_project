@@ -16,6 +16,7 @@ class Creature extends Component {
   }
 
   render() {
+    // console.log('renderrrrr', this.props)
     return (
       <Link to="/view" className={styles.link} id={this.props.id}>
         <div className={styles.outerContainer} onClick={this.handleClick}>
@@ -27,6 +28,7 @@ class Creature extends Component {
           <p>{this.props.price}</p>
           <p>{this.props.sortDate}</p>
           <p>{this.props.timestamp}</p>
+          <img src={this.props.image} alt=""/>
         </div>
       </Link>
     );

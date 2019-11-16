@@ -38,6 +38,7 @@ class ViewCreature extends Component {
                   .map(s => s.charAt(0).toUpperCase() + s.substring(1))
                   .join(" ")}
               </h3>
+              <img src={this.props.creatures[0].image_id[0].url} alt=""/>
               <p>
                 {this.props.creatures[0].description.charAt(0).toUpperCase() +
                   this.props.creatures[0].description.slice(1)}
