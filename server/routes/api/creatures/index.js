@@ -24,7 +24,6 @@ creatureRouter
   })
   .post((req, res) => {
     const creature = req.body;
-    console.log(req.body);
     return new Creature(creature)
       .save()
       .then(results => {
@@ -32,7 +31,7 @@ creatureRouter
       })
       .catch(err => {
         res.send(err);
-      });
+      })
   })
   .put((req, res) => {
     const putObj = req.body;

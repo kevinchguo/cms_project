@@ -59,7 +59,6 @@ imageRouter.post('/upload', (req, res) => {
                 const imageName = req.file.key;
                 const imageLocation = req.file.location;
                 //save file name into database
-
                 res.json({
                     image: imageName,
                     location: imageLocation
@@ -68,5 +67,17 @@ imageRouter.post('/upload', (req, res) => {
         }
     })
 });
+
+imageRouter.post('/', (req, res) => {
+    return new Image(req.body)
+        .save()
+        .then(results => {
+            console.log('IMAGE POST', results);
+            res.status(200).json(results)
+        })
+        .catch(err => {
+            res.send(err);
+        })
+})
 
 module.exports = imageRouter;
