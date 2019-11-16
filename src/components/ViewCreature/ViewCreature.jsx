@@ -1,33 +1,29 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import styles from './ViewCreature.module.scss';
-import TimeAgo from 'javascript-time-ago';
-import en from 'javascript-time-ago/locale/en';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import styles from "./ViewCreature.module.scss";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 
 class ViewCreature extends Component {
   constructor(props) {
     super(props);
-    this.state = { price: '' };
+    this.state = { price: 0 };
     this.convertPrice = this.convertPrice.bind(this);
   }
 
-  convertPrice = () => {
-    let price = this.props.creatures[0].price.toString().split('');
-    return price;
-  };
+  convertPrice = data => {
+    let price = data.toString().split("");
 
-  // componentDidMount() {
-  //   return this.setState({
-  //     price: this.props.creatures[0].price.toString().split('')
-  //   });
-  // }
+    price.splice(price.length - 2, 0, ".");
+
+    price.unshift("$");
+
+    return price.join("");
+  };
 
   render() {
     TimeAgo.addLocale(en);
-    const timeAgo = new TimeAgo('en-US');
-    console.log(this.convertPrice);
-    // let price = this.props.creatures[0].price.toString().split('');
-    // price.splice(-2, 0, '.');
+    const timeAgo = new TimeAgo("en-US");
     return (
       <div>
         <h1>
@@ -39,13 +35,17 @@ class ViewCreature extends Component {
               <p>{this.props.creatures[0].category_id.category}</p>
               <p>{this.props.creatures[0].creature_status_id.status}</p>
               <p>{this.props.creatures[0].condition_id.condition}</p>
-              <p>{this.convertPrice().join('')}</p>
+              <p>
+                {this.props.creatures[0].price
+                  ? this.convertPrice(this.props.creatures[0].price)
+                  : 0}
+              </p>
               <p>{`Posted: ${timeAgo.format(
                 new Date(this.props.creatures[0].sort_by_date)
               )}`}</p>
             </div>
           ) : (
-            ''
+            ""
           )}
         </h1>
       </div>

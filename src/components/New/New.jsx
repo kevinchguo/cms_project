@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AddCreature } from "../../actions";
+import { AddCreature, UploadImage } from "../../actions";
 import { connect } from "react-redux";
 import styles from "./New.module.scss";
 
@@ -23,6 +23,8 @@ class New extends Component {
     this.handlePriceInput = this.handlePriceInput.bind(this);
     this.handleCategoryInput = this.handleCategoryInput.bind(this);
     this.handleConditionInput = this.handleConditionInput.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
+    this.getFormData = this.getFormData.bind(this);
   }
 
   handleClick(e) {
@@ -48,6 +50,16 @@ class New extends Component {
 
   handleConditionInput(e) {
     this.setState({ condition_id: parseInt(e.target.value) });
+  }
+
+  getFormData = obj =>
+    Object.keys(obj).reduce((formData, key) => {
+      formData.append(key, obj[key]);
+      return formData;
+    }, new FormData());
+
+  handleUpload(e) {
+    this.props.UploadImage(e.target.files[0]);
   }
 
   render() {
@@ -99,9 +111,10 @@ class New extends Component {
           </div>
           <input
             type="file"
-            name="picture"
+            name="creatureImage"
             accept="image/*"
             className={styles.upload}
+            onChange={this.handleUpload}
           />
           <button
             onClick={this.handleClick}
@@ -119,6 +132,9 @@ const mapDispatchToProps = dispatch => {
   return {
     AddCreature: data => {
       return dispatch(AddCreature(data));
+    },
+    UploadImage: data => {
+      return dispatch(UploadImage(data));
     }
   };
 };

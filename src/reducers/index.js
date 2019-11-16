@@ -7,11 +7,17 @@ import {
   LOWEST_CREATURE,
   VIEW_CREATURE,
   CLEAR,
-  ADD_CREATURE
+  ADD_CREATURE,
+  UPLOAD_IMAGE
 } from "../actions";
 import { USER_LOGIN } from "../actions";
 
-const intialState = { creatures: [], users: {}, singleCreatures: [] };
+const intialState = {
+  creatures: [],
+  users: {},
+  singleCreatures: [],
+  imageUrl: ""
+};
 
 const reducer = (state = intialState, action) => {
   switch (action.type) {
@@ -37,6 +43,8 @@ const reducer = (state = intialState, action) => {
       return Object.assign({}, state, {
         creatures: [...action.payload]
       });
+    case UPLOAD_IMAGE:
+      return { imageUrl: action.payload };
     default:
       return state;
   }
