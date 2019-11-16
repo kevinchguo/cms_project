@@ -7,11 +7,15 @@ import {
   LOWEST_CREATURE,
   VIEW_CREATURE,
   CLEAR,
-  ADD_CREATURE
+  ADD_CREATURE,
+  UPLOAD_IMAGE,
+  ADD_IMAGE
 } from "../actions";
 import { USER_LOGIN } from "../actions";
 
-const intialState = { creatures: [], users: {}, singleCreatures: [] };
+const intialState = { creatures: [], users: {}, singleCreatures: [], imageURL: {} , images: []};
+
+export let obj, img;
 
 const reducer = (state = intialState, action) => {
   switch (action.type) {
@@ -33,9 +37,18 @@ const reducer = (state = intialState, action) => {
       return Object.assign({}, state, { singleCreatures: action.payload });
     case CLEAR:
       return Object.assign({}, state, { singleCreatures: action.payload });
+    case UPLOAD_IMAGE:
+      img = action.payload;
+      return Object.assign({}, state, { imageURL: action.payload });
     case ADD_CREATURE:
+      console.log('PAYLOAD', action.payload);
+      obj = action.payload;
       return Object.assign({}, state, {
-        creatures: [...action.payload]
+        creatures: {...action.payload}      
+      });
+    case ADD_IMAGE:
+      return Object.assign({}, state, {
+        images: {...action.payload}
       });
     default:
       return state;

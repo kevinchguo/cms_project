@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { AddCreature } from "../../actions";
+import { AddCreature, UploadImage, AddImage } from "../../actions";
 import { connect } from "react-redux";
 import styles from "./New.module.scss";
+import { obj, img } from '../../reducers/index';
 
 class New extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class New extends Component {
       creature_status_id: 1,
       condition_id: 1,
       price: 0,
-      sort_by_date: "2019-08-24T12:03:39Z"
+      sort_by_date: "2019-08-24T12:03:39Z",
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -23,11 +24,19 @@ class New extends Component {
     this.handlePriceInput = this.handlePriceInput.bind(this);
     this.handleCategoryInput = this.handleCategoryInput.bind(this);
     this.handleConditionInput = this.handleConditionInput.bind(this);
+    this.handleUpload = this.handleUpload.bind(this)
   }
 
   handleClick(e) {
     e.preventDefault();
-    this.props.AddCreature(this.state);
+    this.props.AddCreature(this.state)
+    .then(() => {
+      let imgData = {
+        creature_id: obj.id,
+        url: img.data.location
+      }
+      this.props.AddImage(imgData);
+    })
   }
 
   handleNameInput(e) {
@@ -48,6 +57,12 @@ class New extends Component {
 
   handleConditionInput(e) {
     this.setState({ condition_id: parseInt(e.target.value) });
+  }
+
+  handleUpload(e) {
+    const formData = new FormData();
+    formData.append('creatureImage', e.target.files[0]);
+    this.props.UploadImage(formData);
   }
 
   render() {
@@ -99,9 +114,10 @@ class New extends Component {
           </div>
           <input
             type="file"
-            name="picture"
+            name="creatureImage"
             accept="image/*"
             className={styles.upload}
+            onChange={this.handleUpload}
           />
           <button
             onClick={this.handleClick}
@@ -119,6 +135,12 @@ const mapDispatchToProps = dispatch => {
   return {
     AddCreature: data => {
       return dispatch(AddCreature(data));
+    },
+    UploadImage: data => {
+      return dispatch(UploadImage(data));
+    },
+    AddImage: data => {
+      return dispatch(AddImage(data));
     }
   };
 };

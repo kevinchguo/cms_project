@@ -4,6 +4,7 @@ const aws = require("aws-sdk");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const path = require('path');
+const Image = require('../../../database/models/Image');
 const url = require('url');
 
 require("dotenv").config();
@@ -46,7 +47,7 @@ function checkFileType( file, cb ){
 imageRouter.post('/upload', (req, res) => {
     creatureImageUpload( req, res, (error) => {
         if (error){
-            console.log( 'errors', error);
+            console.log('errors', error);
             res.json({ error: error });
         } else {
             //if file not found
@@ -59,7 +60,7 @@ imageRouter.post('/upload', (req, res) => {
                 const imageLocation = req.file.location;
                 //save file name into database
                 res.json({
-                    image:imageName,
+                    image: imageName,
                     location: imageLocation
                 })
             }
@@ -67,6 +68,16 @@ imageRouter.post('/upload', (req, res) => {
     })
 });
 
-
+imageRouter.post('/', (req, res) => {
+    return new Image(req.body)
+        .save()
+        .then(results => {
+            console.log('IMAGE POST', results);
+            res.status(200).json(results)
+        })
+        .catch(err => {
+            res.send(err);
+        })
+})
 
 module.exports = imageRouter;
