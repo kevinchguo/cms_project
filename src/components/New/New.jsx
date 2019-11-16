@@ -31,11 +31,14 @@ class New extends Component {
     e.preventDefault();
     this.props.AddCreature(this.state)
     .then(() => {
-      let imgData = {
-        creature_id: obj.id,
-        url: img.data.location
+      if(img !== undefined) {
+        console.log('IMAGE', img);
+        let imgData = {
+          creature_id: obj.id,
+          url: img.data.location
+        }
+        this.props.AddImage(imgData);
       }
-      this.props.AddImage(imgData);
     })
   }
 

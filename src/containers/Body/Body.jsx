@@ -22,7 +22,9 @@ class Body extends Component {
   }
 
   mapCreatures = data => {
+    console.log('DATA', data)
     return data.map(creature => {
+      // console.log('creature',creature)
       let price = creature.price.toString().split('');
       price.splice(-2, 0, '.');
       const months = [
@@ -64,8 +66,13 @@ class Body extends Component {
             creature.condition_id.condition.charAt(0).toUpperCase() +
             creature.condition_id.condition.slice(1)
           }
-          price={`$${price.join('')}`}
-          sortDate={`${months[datePost.getMonth()]} ${datePost.getDay()}`}
+          price={
+            `$${price.join('')}`
+          }
+          sortDate={
+            `${months[datePost.getMonth()]} ${datePost.getDay()}`
+          }
+          image={!creature.image_id[0] ? "" : creature.image_id[0].url}
         />
       );
     });
@@ -135,7 +142,7 @@ class Body extends Component {
   }
 
   render() {
-    console.log(this.props.creatures);
+    // console.log(this.props.creatures);
     return (
       <>
         <div className={styles.sort}>
@@ -154,7 +161,7 @@ class Body extends Component {
             <option value="Mythical">Mythical</option>
           </select>
           <select className={styles.select} onChange={this.handleOptionChange}>
-            <option value="DefaultAge">Filter By Age</option>
+            <option value="Default    console.log(this.convertPrice);Age">Filter By Age</option>
             <option value="Newborn">Newborn</option>
             <option value="Young">Young</option>
             <option value="Adult">Adult</option>

@@ -25,7 +25,6 @@ class ViewCreature extends Component {
   render() {
     TimeAgo.addLocale(en);
     const timeAgo = new TimeAgo('en-US');
-    console.log(this.convertPrice);
     // let price = this.props.creatures[0].price.toString().split('');
     // price.splice(-2, 0, '.');
     return (
@@ -34,6 +33,7 @@ class ViewCreature extends Component {
           {Object.keys(this.props.creatures).length > 0 ? (
             <div className={styles.container}>
               <h3>{this.props.creatures[0].name}</h3>
+              <img src={this.props.creatures[0].image_id[0].url} alt=""/>
               <p>{this.props.creatures[0].description}</p>
               <p>{this.props.creatures[0].user_id.name}</p>
               <p>{this.props.creatures[0].category_id.category}</p>
