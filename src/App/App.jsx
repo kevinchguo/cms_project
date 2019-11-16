@@ -8,6 +8,7 @@ import Login from "../components/Login";
 import New from "../components/New";
 import Settings from "../components/Settings";
 import ViewCreatures from "../components/ViewCreature";
+import EditCreature from "../components/EditCreature";
 import styles from "./App.module.scss";
 
 import { userLoginAsync } from "../actions/index";
@@ -48,6 +49,7 @@ class App extends Component {
                 <Route path="/settings" component={Settings} />
                 <Route path="/New" component={New} />
                 <Route path="/view" component={ViewCreatures} />
+                <Route path="/edit" component={EditCreature} />
               </Switch>
             </div>
           </div>

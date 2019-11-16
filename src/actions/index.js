@@ -12,6 +12,7 @@ export const CLEAR = "CLEAR";
 export const ADD_CREATURE = "ADD_CREATURE";
 export const UPLOAD_IMAGE = "UPLOAD_IMAGE";
 export const ADD_IMAGE = "ADD_IMAGE";
+export const EDIT_CREATURE = "EDIT_CREATURE";
 
 export const loadCreatureAsync = () => async dispatch => {
   await Axios.get("/api/creatures")
@@ -131,6 +132,19 @@ export const AddCreature = data => async dispatch => {
     .then(creature => {
       dispatch({
         type: ADD_CREATURE,
+        payload: creature.data
+      });
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
+};
+
+export const EditCreature = data => async dispatch => {
+  await Axios.put("/api/creatures", data)
+    .then(creature => {
+      dispatch({
+        type: EDIT_CREATURE,
         payload: creature.data
       });
     })
