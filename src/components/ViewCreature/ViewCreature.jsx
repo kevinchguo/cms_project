@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styles from "./ViewCreature.module.scss";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
+import { Link } from "react-router-dom";
 
 class ViewCreature extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class ViewCreature extends Component {
                   .map(s => s.charAt(0).toUpperCase() + s.substring(1))
                   .join(" ")}
               </h3>
+              <img src={this.props.creatures[0].image_id[0].url} alt=""/>
               <p>
                 {this.props.creatures[0].description.charAt(0).toUpperCase() +
                   this.props.creatures[0].description.slice(1)}
@@ -64,7 +66,9 @@ class ViewCreature extends Component {
                 new Date(this.props.creatures[0].sort_by_date)
               )}`}</p>
               <div className={styles.buttonContainer}>
-                <button onClick={this.handleClickEdit}>Edit</button>
+                <Link to="/edit">
+                  <button onClick={this.handleClickEdit}>Edit</button>
+                </Link>
                 <button onClick={this.handleClickDelete}>Delete</button>
               </div>
             </div>

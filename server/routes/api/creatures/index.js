@@ -79,7 +79,8 @@ creatureRouter.route("/newest").get((req, res) => {
         "user_id",
         "category_id",
         "creature_status_id",
-        "condition_id"
+        "condition_id",
+        "image_id"
       ]
     })
     .then(results => {
@@ -98,7 +99,9 @@ creatureRouter.route("/oldest").get((req, res) => {
         "user_id",
         "category_id",
         "creature_status_id",
-        "condition_id"
+        "condition_id",
+        "image_id"
+
       ]
     })
     .then(results => {
@@ -117,7 +120,8 @@ creatureRouter.route("/highest").get((req, res) => {
         "user_id",
         "category_id",
         "creature_status_id",
-        "condition_id"
+        "condition_id",
+        "image_id"
       ]
     })
     .then(results => {
@@ -136,7 +140,8 @@ creatureRouter.route("/lowest").get((req, res) => {
         "user_id",
         "category_id",
         "creature_status_id",
-        "condition_id"
+        "condition_id",
+        "image_id"
       ]
     })
     .then(results => {
@@ -156,7 +161,8 @@ creatureRouter.route("/search").post((req, res) => {
         "user_id",
         "category_id",
         "creature_status_id",
-        "condition_id"
+        "condition_id",
+        "image_id"
       ]
     })
       .then(creatures => {
@@ -177,7 +183,8 @@ creatureRouter.route("/search").post((req, res) => {
           "user_id",
           "category_id",
           "creature_status_id",
-          "condition_id"
+          "condition_id",
+          "image_id"
         ]
       })
       .then(results => {
@@ -196,7 +203,8 @@ creatureRouter.get("/:id", (req, res) => {
         "user_id",
         "category_id",
         "creature_status_id",
-        "condition_id"
+        "condition_id",
+        "image_id"
       ]
     })
     .then(results => {

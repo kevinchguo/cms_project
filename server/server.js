@@ -35,6 +35,7 @@ const PORT = process.env.EXPRESS_HOST_PORT;
 const app = express();
 
 ///// MIDDLEWARE /////
+app.use(express.static("./server/public"));
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
