@@ -35,10 +35,83 @@ const PORT = process.env.EXPRESS_HOST_PORT;
 const app = express();
 
 ///// MIDDLEWARE /////
+app.use(express.static("./server/public"));
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(decorator);
+// app.use(
+//   session({
+//     store: new RedisStore({ client }),
+//     secret: process.env.REDIS_SECRET,
+//     resave: false,
+//     saveUninitialized: false
+//   })
+// );
+// app.use(passport.initialize()); //starts up passport and sets up middleware
+// app.use(passport.session()); //current session we are using
+
+// passport.use(
+//   new LocalStrategy(function(username, password, done) {
+//     return new User({ username: username })
+//       .fetch()
+//       .then(user => {
+//         console.log(user);
+
+//         if (user === null) {
+//           return done(null, false, { message: "bad username or password" });
+//         } else {
+//           user = user.toJSON();
+
+//           bcrypt.compare(password, user.password).then(res => {
+//             // Happy route: username exists, password matches
+//             if (res) {
+//               return done(null, user); // this is the 'user' that goes to passport.serializeUser
+//             }
+//             // Error Route: Username exists, password does not match
+//             else {
+//               return done(null, false, { message: "bad username or password" });
+//             }
+//           });
+//         }
+//       })
+//       .catch(err => {
+//         console.log("error: ", err);
+//         return done(err);
+//       });
+//   })
+// );
+
+// // user comes from database then return the session object
+// passport.serializeUser(function(user, done) {
+//   console.log("serializing");
+
+//   return done(null, { id: user.id, username: user.username });
+// });
+
+// //comes back to website with a cookie
+// passport.deserializeUser(function(user, done) {
+//   console.log("deserializing");
+//   console.log(user);
+//   return done(null, user);
+// });
+
+// app.use(
+//   "/login",
+//   passport.authenticate("local", {
+//     successRedirect: "/",
+//     failureRedirect: "/"
+//   })
+// );
+
+// // Copy and paste into route if you need to authenticate and throw it after the "/api/***"
+// function isAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next();
+//   } else {
+//     return res.redirect("/");
+//   }
+// }
 
 ///// ROUTES /////
 app.use("/api/users", userRoutes);
